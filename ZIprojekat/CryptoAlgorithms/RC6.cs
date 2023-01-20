@@ -18,7 +18,7 @@ namespace ZIprojekat
 
         public RC6(byte[] key)
         {
-            ExpandKey(key);
+            GenerateKey(key);
         }
 
         public RC6()
@@ -33,7 +33,7 @@ namespace ZIprojekat
         {
             return (value << shift) | (value >> (W - shift));
         }
-        public void ExpandKey(byte[] keyCheck)
+        public void GenerateKey(byte[] keyCheck)
         {
             MainKey = keyCheck;
             int c = 0;
@@ -69,14 +69,14 @@ namespace ZIprojekat
             }
             return arrayBytes;
         }
-        public byte[] Encrypt(byte[] byteText)
+        public byte[] Encrypt(byte[] plaintext)
         {
             uint A, B, C, D;
-            int i = byteText.Length;
+            int i = plaintext.Length;
             while (i % 16 != 0)
                 i++;
             byte[] text = new byte[i];
-            byteText.CopyTo(text, 0);
+            plaintext.CopyTo(text, 0);
             byte[] cipherText = new byte[i];
             for (i = 0; i < text.Length; i = i + 16)
             {
@@ -106,17 +106,17 @@ namespace ZIprojekat
             }
             return cipherText;
         }
-        public byte[] Decrypt(byte[] cipherText)
+        public byte[] Decrypt(byte[] ciphertext)
         {
             uint A, B, C, D;
             int i;
-            byte[] plainText = new byte[cipherText.Length];
-            for (i = 0; i < cipherText.Length; i = i + 16)
+            byte[] plainText = new byte[ciphertext.Length];
+            for (i = 0; i < ciphertext.Length; i = i + 16)
             {
-                A = BitConverter.ToUInt32(cipherText, i);
-                B = BitConverter.ToUInt32(cipherText, i + 4);
-                C = BitConverter.ToUInt32(cipherText, i + 8);
-                D = BitConverter.ToUInt32(cipherText, i + 12);
+                A = BitConverter.ToUInt32(ciphertext, i);
+                B = BitConverter.ToUInt32(ciphertext, i + 4);
+                C = BitConverter.ToUInt32(ciphertext, i + 8);
+                D = BitConverter.ToUInt32(ciphertext, i + 12);
                 C = C - RoundKey[2 * R + 3];
                 A = A - RoundKey[2 * R + 2];
                 for (int j = R; j >= 1; j--)

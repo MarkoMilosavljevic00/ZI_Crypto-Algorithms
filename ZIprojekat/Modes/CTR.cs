@@ -29,7 +29,7 @@ namespace ZIprojekat
 
         public byte[] EncryptRC6(byte[] data, string key)
         {
-            rc6.ExpandKey(Encoding.UTF8.GetBytes(key));
+            rc6.GenerateKey(Encoding.UTF8.GetBytes(key));
             byte[] encrypted = new byte[data.Length];
             for (int i = 0; i < data.Length; i += 16)
             {

@@ -7,7 +7,6 @@ namespace ZIprojekat
 {
     public class Bifid
     {
-        #region Attributes
 
         private char[,] keySquare = new char[5, 5];
         private int period = 5;
@@ -15,13 +14,9 @@ namespace ZIprojekat
         private int iIndexJ;
 
 
-        #endregion
-
         public Bifid()
         {
         }
-
-        #region Methodes
 
         public void stepOneEncrypt(string plaintext, out string[] values)
         {
@@ -112,7 +107,6 @@ namespace ZIprojekat
             {
                 if (newValue[i] == ' ')
                 {
-                    //encryptedPlaintext += " ";
                     i++;
                 }
                 encryptedPlaintext += keySquare[Int32.Parse(newValue[i].ToString()) - 1, Int32.Parse(newValue[i + 1].ToString()) - 1];
@@ -231,23 +225,6 @@ namespace ZIprojekat
 
         public List<string> EncryptLines(List<string> plaintextLines)
         {
-            //string[] splited = filePath.Split('\\');
-            //string fileName = splited[splited.Length - 1].Replace(".txt", "KeySquare.txt");
-            //this.LoadKey(fileName);
-
-            //List<string> plaintextLines = new List<string>();
-
-            ////u slucaju ponovnog otvaranja kroz fsw nakon nekog vremena
-            //using (StreamReader sr = new StreamReader(new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))
-            //{
-            //    string line = sr.ReadLine();
-            //    while (!String.IsNullOrEmpty(line))
-            //    {
-            //        plaintextLines.Add(line);
-            //        line = sr.ReadLine();
-            //    }
-            //}
-
             string[] rcValues;
             string rcTogether;
             List<string> encryptedLines = new List<string>();
@@ -264,34 +241,11 @@ namespace ZIprojekat
                 encryptedLines.Add(temp);
             }
 
-            //byte[] hashedText = tigerHash.Process(oneLine);
-            //string hashed = Encoding.Unicode.GetString(hashedText);
-            //encryptedLines.Add(hashed);
-
             return encryptedLines;
         }
 
         public List<string> DecryptLines(List<string> plaintextLines/*, out bool sameHashes*/)
         {
-            //sameHashes = false;
-
-            //string[] splited = filePath.Split('\\');
-            //string fileName = splited[splited.Length - 1].Replace(".txt", "KeySquare.txt");
-            //this.LoadKey(fileName);
-
-            //List<string> plaintextLines = new List<string>();
-
-            ////u slucaju ponovnog otvaranja kroz fsw nakon nekog vremena
-            //using (StreamReader sr = new StreamReader(new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite), Encoding.Unicode))
-            //{
-            //    string line = sr.ReadLine();
-            //    while (!String.IsNullOrEmpty(line))
-            //    {
-            //        plaintextLines.Add(line);
-            //        line = sr.ReadLine();
-            //    }
-            //}
-
             string temp2;
             string temp3;
             string[] values;
@@ -299,7 +253,6 @@ namespace ZIprojekat
             List<string> decryptedLines = new List<string>();
             string oneLine = "";
 
-            //for (int i = 0; i < plaintextLines.Count - 1; i++)
             foreach (string line in plaintextLines)
             {
                 this.stepOneDecrypt(line, out temp2);
@@ -311,45 +264,6 @@ namespace ZIprojekat
             }
 
             return decryptedLines;
-        }
-
-        public void GenerateAndSaveKey(string fileName)
-        {
-            if (!Directory.Exists("Key Squares"))
-                Directory.CreateDirectory("Key Squares");
-
-            string filePath = "Key Squares\\" + fileName;
-
-            using (StreamWriter sw = new StreamWriter(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite)))
-            {
-                Random rand = new Random();
-                List<char> showedLetters = new List<char>();
-                for (int i = 0; i < 5; i++)
-                {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        int charNumb = rand.Next(97, 123);
-                        char letter = Convert.ToChar(charNumb);
-                        if (letter == 'i' && !showedLetters.Contains(letter))
-                        {
-                            iIndexI = i;
-                            iIndexJ = j;
-                        }
-                        if (letter == 'j' || showedLetters.Contains(letter))
-                        {
-                            j--;
-                            continue;
-                        }
-
-                        showedLetters.Add(letter);
-                        keySquare[i, j] = letter;
-
-                        sw.Write(letter);
-                    }
-
-                    sw.WriteLine();
-                }
-            }
         }
 
         public List<string> GenerateKey()
@@ -401,32 +315,6 @@ namespace ZIprojekat
                 i++;
                 j = 0;
             }
-
-            //    using (StreamReader sr = new StreamReader(new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))
-            //    {
-            //        string readLine = sr.ReadLine();
-            //        int i = 0;
-            //        int j = 0;
-
-            //        while (i < 5)
-            //        {
-            //            foreach (var item in readLine)
-            //            {
-            //                if (item == 'i')
-            //                {
-            //                    iIndexI = i;
-            //                    iIndexJ = j;
-            //                }
-            //                keySquare[i, j++] = item;
-            //            }
-            //            i++;
-            //            j = 0;
-            //            readLine = sr.ReadLine();
-            //        }
-            //    }
-            //}
-
-            #endregion
         }
     }
 }

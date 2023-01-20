@@ -16,11 +16,13 @@ namespace ZIprojekat
         RC6 rc6;
         CTR ctr;
         Bifid bifid;
+        Knapsack ks;
         byte[] rc6BmpHash;
         public Service1()
         {
             rc6 = new RC6();
             bifid = new Bifid();
+            ks = new Knapsack();
             ctr = new CTR(rc6);
         }
 
@@ -59,7 +61,7 @@ namespace ZIprojekat
             switch (alghorithm)
             {
                 case "RC6":
-                    rc6.ExpandKey(Encoding.Default.GetBytes(key));
+                    rc6.GenerateKey(Encoding.Default.GetBytes(key));
                     encData = rc6.Encrypt(pixelData);
                     break;
                 case "RC6_CTR":
@@ -94,7 +96,7 @@ namespace ZIprojekat
             switch (alghorithm)
             {
                 case "RC6":
-                    rc6.ExpandKey(Encoding.Default.GetBytes(key));
+                    rc6.GenerateKey(Encoding.Default.GetBytes(key));
                     decData = rc6.Decrypt(pixelData);
                     break;
                 case "RC6_CTR":
@@ -138,7 +140,7 @@ namespace ZIprojekat
         public string EncryptRC6(string source, string key)
         {
             //RC6 rc = new RC6(Encoding.UTF8.GetBytes(key));
-            rc6.ExpandKey(Encoding.UTF8.GetBytes(key));
+            rc6.GenerateKey(Encoding.UTF8.GetBytes(key));
             byte[] byteText = Encoding.Default.GetBytes(source);
             string res = Encoding.Default.GetString(rc6.Encrypt(byteText));
             return res;
@@ -156,7 +158,7 @@ namespace ZIprojekat
         public string DecryptRC6(string source, string key)
         {
             //RC6 rc = new RC6(Encoding.UTF8.GetBytes(key));
-            rc6.ExpandKey(Encoding.UTF8.GetBytes(key));
+            rc6.GenerateKey(Encoding.UTF8.GetBytes(key));
             string res = Encoding.Default.GetString(rc6.Decrypt(Encoding.Default.GetBytes(source)));
             return res;
         }
@@ -197,6 +199,29 @@ namespace ZIprojekat
         {
             TigerHash th = new TigerHash();
             byte[] res = th.Process(source);
+            return res;
+        }
+
+        public List<string> GenerateRandomKeyKS()
+        {
+            List<string> key = ks.GenerateKeys();
+            return key;
+        }
+
+        public void LoadKeyKS(string key)
+        {
+            ks.LoadKey(key);
+        }
+
+        public string EncryptKS(string source)
+        {
+            string res = ks.Encrypt(source);
+            return res;
+        }
+
+        public string DecryptKS(string source)
+        {
+            string res = ks.Decrypt(source);
             return res;
         }
 

@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
     {
         byte[] rc6Hash;
         byte[] bifidHash;
+        byte[] ksHash;
 
         ServiceReference1.IService1 client = new ServiceReference1.Service1Client();
         public Form1()
@@ -69,17 +70,16 @@ namespace WindowsFormsApp1
         }
         private void bifidGenKeyBtn_Click(object sender, EventArgs e)
         {
-            bifidKeyTxt.Text = "";
+            bifidKeyInput.Text = "";
             string[] key = client.GenerateRandomKeyBifid();
             foreach (string row in key)
             {
-                bifidKeyTxt.AppendText(row);
+                bifidKeyInput.AppendText(row);
                 if (key.Last() != row)
-                    bifidKeyTxt.AppendText(Environment.NewLine);
+                    bifidKeyInput.AppendText(Environment.NewLine);
             }
             bifidEncBtn.Enabled = true;
             bifidDecBtn.Enabled = true;
-
         }
         private void bifidSaveKeyBtn_Click(object sender, EventArgs e)
         {
@@ -90,7 +90,7 @@ namespace WindowsFormsApp1
             {
                 using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
                 {
-                    sw.Write(bifidKeyTxt.Text);
+                    sw.Write(bifidKeyInput.Text);
                 }
             }
         }
@@ -143,6 +143,9 @@ namespace WindowsFormsApp1
         private void ksKeyFileBtn_Click(object sender, EventArgs e)
         {
             ChooseKeyFile(ksKeyInputFile, ksInputPathFile, ksOutputPathFile, ksEncFileBtn, ksDecFileBtn);
+            string key = GetKeyFromFile(ksKeyInputFile);
+            ksKeyInput.Text = key;
+            //client.LoadKeyKS(key);
         }
 
         private void ksInputFileBtn_Click(object sender, EventArgs e)
@@ -154,6 +157,34 @@ namespace WindowsFormsApp1
         private void ksOutputFileBtn_Click(object sender, EventArgs e)
         {
             ChooseOutputFile(ksOutputPathFile, ksOutputFolderBrowser, ksEncFileBtn, ksDecFileBtn);
+        }
+
+        private void ksGenKeyBtn_Click(object sender, EventArgs e)
+        {
+            ksKeyInput.Text = "";
+            string[] key = client.GenerateRandomKeyKS();
+            foreach (string row in key)
+            {
+                ksKeyInput.AppendText(row);
+                if (key.Last() != row)
+                    ksKeyInput.AppendText(Environment.NewLine);
+            }
+            ksEncFileBtn.Enabled = true;
+            ksDecFileBtn.Enabled = true;
+        }
+
+        private void ksSaveKeyBtn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Text Files|*.txt|All Files|*.*";
+            saveFileDialog1.Title = "Save key";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
+                {
+                    sw.Write(ksKeyInput.Text);
+                }
+            }
         }
 
         private void ksEncFileBtn_Click(object sender, EventArgs e)
@@ -220,6 +251,7 @@ namespace WindowsFormsApp1
                     {
                         bmpRadio.Enabled = true;
                         bmpRadio.Checked = true;
+
                     }
                     else
                     {
@@ -625,57 +657,59 @@ namespace WindowsFormsApp1
         private void KSDecryptProcedure(string path)
         {
             string input = GetInputFromPathOfFile(path);
-            string key = GetKeyFromFile(ksKeyInputFile);
+            //string key = GetKeyFromFile(ksKeyInputFile);
+            string key = ksKeyInput.Text;
             string plaintext;
-            string filename = Path.GetFileName(path).Replace(".txt", "_DECRYPTED.txt");
+            string filename = Path.GetFileNameWithoutExtension(path).Replace("ENCRYPTED", "DECRYPTED");
 
-            if (bifidInputPathFile.Text.EndsWith(".bmp"))
+            if (ksInputPathFile.Text.EndsWith(".bmp"))
             {
                 MessageBox.Show("Enkripcija bitmape nije podrzana Knapsack algoritmom. Molimo vas probajte da iskoristite neki drugi algoritam.", "Greska!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!ValidateBifidKey(key))
-                return;
+            //if (!ValidateKSKey(key))
+            //    return;
 
-            client.LoadKeyBifid(key);
-            //GenerateRC6(input);
-            plaintext = client.DecryptRC6(input, key);
+            client.LoadKeyKS(key);
+            plaintext = client.DecryptKS(input);
+            ValidateKSTigerHash(plaintext);
             WriteOutputToFile(plaintext, ksOutputPathFile.Text, filename, ksTxtRadio, ksBinRadio);
         }
 
         private void KSEncryptProcedure(string path)
         {
             string input = GetInputFromPathOfFile(path);
-            string key = GetKeyFromFile(ksKeyInputFile);
+            //string key = GetKeyFromFile(ksKeyInputFile);
+            string key = ksKeyInput.Text;
             string ciphertext;
-            string filename = Path.GetFileName(path).Replace(".txt", "_ENCRYPTED.txt");
+            string filename = "ENCRYPTED_" + Path.GetFileNameWithoutExtension(path);
 
-            if (bifidInputPathFile.Text.EndsWith(".bmp"))
+            if (ksInputPathFile.Text.EndsWith(".bmp"))
             {
                 MessageBox.Show("Enkripcija bitmape nije podrzana Knapsack algoritmom. Molimo vas probajte da iskoristite neki drugi algoritam.", "Greska!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!ValidateBifidKey(key))
-                return;
+            //if (!ValidateKSKey(key))
+            //    return;
 
-            client.LoadKeyBifid(key);
-            //GenerateRC6(input);
-            ciphertext = client.EncryptRC6(input, key);
+            client.LoadKeyKS(key);
+            GenerateKSTigerHash(input);
+            ciphertext = client.EncryptKS(input);
             WriteOutputToFile(ciphertext, ksOutputPathFile.Text, filename, ksTxtRadio, ksBinRadio);
         }
         #endregion
 
         #region Tiger Hash
-        private void ValidateRC6TigerHash(string plaintext)
+        private void ValidateRC6TigerHash(string input)
         {
             if (rc6TigerHashChk.Checked)
             {
                 rc6TigerHashChk.Enabled = true;
-                if (plaintext.Contains('\0'))
-                    plaintext = plaintext.Replace("\0", string.Empty);
+                if (input.Contains('\0'))
+                    input = input.Replace("\0", string.Empty);
                 if (rc6Hash != null)
                 {
-                    byte[] checkHash = client.GenerateTigerHash(plaintext);
+                    byte[] checkHash = client.GenerateTigerHash(input);
                     if (checkHash.SequenceEqual(rc6Hash))
                     {
                         MessageBox.Show("Enrkipcija je uspesno validirana, hash vrednosti se poklapaju!", "Uspesna validacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -746,6 +780,42 @@ namespace WindowsFormsApp1
                     oneLine += tmp.Replace("\r", "");
                 }
                 bifidHash = client.GenerateTigerHash(oneLine);
+            }
+        }
+
+        private void GenerateKSTigerHash(string input)
+        {
+            if (ksTigerHashChk.Checked)
+            {
+                ksTigerHashChk.Enabled = false;
+                ksHash = client.GenerateTigerHash(input);
+            }
+        }
+
+        private void ValidateKSTigerHash(string input)
+        {
+            if (ksTigerHashChk.Checked)
+            {
+                ksTigerHashChk.Enabled = true;
+                //if (plaintext.Contains('\0'))
+                //    plaintext = plaintext.Replace("\0", string.Empty);
+                if (ksHash != null)
+                {
+                    byte[] checkHash = client.GenerateTigerHash(input);
+                    if (checkHash.SequenceEqual(ksHash))
+                    {
+                        MessageBox.Show("Enrkipcija je uspesno validirana, hash vrednosti se poklapaju!", "Uspesna validacija", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vrednosti hash funkcije originalnog fajla i dekriptovanog nisu iste!", "Neuspesna validacija", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nepoznata vrednost hash funkcije originalnog fajla!", "Neuspesna validacija", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
