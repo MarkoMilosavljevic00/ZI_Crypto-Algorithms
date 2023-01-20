@@ -42,7 +42,7 @@ namespace ZIprojekat
             return composite;
         }
 
-        public bool EncryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key = null)
+        public bool EncryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce)
         {
             byte[] all_data = File.ReadAllBytes(inputPath);
             byte[] header = new byte[54];
@@ -62,18 +62,9 @@ namespace ZIprojekat
                     rc6.ExpandKey(Encoding.Default.GetBytes(key));
                     encData = rc6.Encrypt(pixelData);
                     break;
-                case "Bifid":
-                    //List<string> pixelData_str = new List<string>();
-                    //pixelData_str.Add(Encoding.Default.GetString(pixelData));
-                    //string[] rcValues;
-                    //string rcTogether;
-                    //string temp;
-                    //bifid.stepOneEncrypt(Encoding.Default.GetString(pixelData).ToLower(), out rcValues);
-                    //bifid.stepTwoEncrypt(rcValues);
-                    //bifid.stepThreeEncrypt(rcValues, out rcTogether);
-                    //bifid.stepFourEncrypt(rcTogether, out temp);
-                    //encData = Encoding.Default.GetBytes(temp);
-                    encData = bifid.Encrypt(pixelData);
+                case "RC6_CTR":
+                    ctr.SetNonce(nonce);
+                    encData = ctr.EncryptRC6(pixelData, key);
                     break;
                 default:
                     return false;
@@ -91,7 +82,7 @@ namespace ZIprojekat
             return true;
         }
 
-        public bool DecryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key = null)
+        public bool DecryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce)
         {
             byte[] all_data = File.ReadAllBytes(inputPath);
             byte[] header = new byte[54];
@@ -106,12 +97,9 @@ namespace ZIprojekat
                     rc6.ExpandKey(Encoding.Default.GetBytes(key));
                     decData = rc6.Decrypt(pixelData);
                     break;
-                case "Bifid":
-                    //List<string> pixelData_str = new List<string>();
-                    //pixelData_str.Add(Encoding.Default.GetString(pixelData));
-                    //List<string> res = bifid.DecryptLines(pixelData_str);
-                    //decData = Encoding.Default.GetBytes(res[0]);
-                    decData = bifid.Decrypt(pixelData);
+                case "RC6_CTR":
+                    ctr.SetNonce(nonce);
+                    decData = ctr.DecryptRC6(pixelData, key);
                     break;
                 default:
                     return false;

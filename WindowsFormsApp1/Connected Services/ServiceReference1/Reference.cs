@@ -91,16 +91,16 @@ namespace WindowsFormsApp1.ServiceReference1 {
         System.Threading.Tasks.Task<WindowsFormsApp1.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(WindowsFormsApp1.ServiceReference1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EncryptBitmap", ReplyAction="http://tempuri.org/IService1/EncryptBitmapResponse")]
-        bool EncryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key);
+        bool EncryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EncryptBitmap", ReplyAction="http://tempuri.org/IService1/EncryptBitmapResponse")]
-        System.Threading.Tasks.Task<bool> EncryptBitmapAsync(string inputPath, string outputPath, string alghorithm, bool hash, string key);
+        System.Threading.Tasks.Task<bool> EncryptBitmapAsync(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DecryptBitmap", ReplyAction="http://tempuri.org/IService1/DecryptBitmapResponse")]
-        bool DecryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key);
+        bool DecryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DecryptBitmap", ReplyAction="http://tempuri.org/IService1/DecryptBitmapResponse")]
-        System.Threading.Tasks.Task<bool> DecryptBitmapAsync(string inputPath, string outputPath, string alghorithm, bool hash, string key);
+        System.Threading.Tasks.Task<bool> DecryptBitmapAsync(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EncryptRC6", ReplyAction="http://tempuri.org/IService1/EncryptRC6Response")]
         string EncryptRC6(string source, string key);
@@ -200,20 +200,20 @@ namespace WindowsFormsApp1.ServiceReference1 {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public bool EncryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key) {
-            return base.Channel.EncryptBitmap(inputPath, outputPath, alghorithm, hash, key);
+        public bool EncryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce) {
+            return base.Channel.EncryptBitmap(inputPath, outputPath, alghorithm, hash, key, nonce);
         }
         
-        public System.Threading.Tasks.Task<bool> EncryptBitmapAsync(string inputPath, string outputPath, string alghorithm, bool hash, string key) {
-            return base.Channel.EncryptBitmapAsync(inputPath, outputPath, alghorithm, hash, key);
+        public System.Threading.Tasks.Task<bool> EncryptBitmapAsync(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce) {
+            return base.Channel.EncryptBitmapAsync(inputPath, outputPath, alghorithm, hash, key, nonce);
         }
         
-        public bool DecryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key) {
-            return base.Channel.DecryptBitmap(inputPath, outputPath, alghorithm, hash, key);
+        public bool DecryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce) {
+            return base.Channel.DecryptBitmap(inputPath, outputPath, alghorithm, hash, key, nonce);
         }
         
-        public System.Threading.Tasks.Task<bool> DecryptBitmapAsync(string inputPath, string outputPath, string alghorithm, bool hash, string key) {
-            return base.Channel.DecryptBitmapAsync(inputPath, outputPath, alghorithm, hash, key);
+        public System.Threading.Tasks.Task<bool> DecryptBitmapAsync(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce) {
+            return base.Channel.DecryptBitmapAsync(inputPath, outputPath, alghorithm, hash, key, nonce);
         }
         
         public string EncryptRC6(string source, string key) {

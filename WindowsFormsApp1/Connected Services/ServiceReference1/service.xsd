@@ -38,6 +38,7 @@
         <xs:element minOccurs="0" name="alghorithm" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="hash" type="xs:boolean" />
         <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nonce" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -56,6 +57,7 @@
         <xs:element minOccurs="0" name="alghorithm" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="hash" type="xs:boolean" />
         <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nonce" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

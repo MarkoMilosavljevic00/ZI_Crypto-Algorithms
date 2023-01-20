@@ -18,9 +18,9 @@ namespace ZIprojekat
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        bool EncryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key = null);
+        bool EncryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce);
         [OperationContract]
-        bool DecryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key = null);
+        bool DecryptBitmap(string inputPath, string outputPath, string alghorithm, bool hash, string key, string nonce);
         [OperationContract]
         string EncryptRC6(string source, string key);
         [OperationContract]

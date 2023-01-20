@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
             string cipherText;
             string filename = rc6NameOutput.Text;
             string alghorithm = "RC6";
-            string nonce = "";
+            string nonce = rc6NonceTxt.Text;
 
             if(string.IsNullOrEmpty(filename))
             {
@@ -122,21 +122,16 @@ namespace WindowsFormsApp1
 
             if (rc6CtrMode.Checked == true)
             {
-                if (rc6NonceTxt.Text.Length != 4)
+                if (nonce.Length != 4)
                 {
                     MessageBox.Show("Nonce treba sadrzati 4 karaktera/broja", "Greska!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                if (rc6PathInput.Text.EndsWith(".bmp"))
-                {
-                    alghorithm = "RC6_CTR";
-                    nonce = rc6NonceTxt.Text;
-                }
+                alghorithm = "RC6_CTR";
             }
             if (rc6PathInput.Text.EndsWith(".bmp"))
             {
-                if (client.EncryptBitmap(rc6PathInput.Text, rc6PathOutput.Text + "\\" + filename, alghorithm, rc6TigerHashChk.Checked, key))
+                if (client.EncryptBitmap(rc6PathInput.Text, rc6PathOutput.Text + "\\" + filename, alghorithm, rc6TigerHashChk.Checked, key, nonce))
                 {
                     if (rc6TigerHashChk.Checked)
                         rc6TigerHashChk.Enabled = false;
@@ -169,11 +164,22 @@ namespace WindowsFormsApp1
             string key = GetKeyFromFile(rc6PathKeyInput);
             string filename = rc6NameOutput.Text;
             string plainText;
+            string alghorithm = "RC6";
+            string nonce = rc6NonceTxt.Text;
 
             if (key.Length < 4)
             {
                 MessageBox.Show("Kljuc mora biti veci od 4 karaktera (128bits)", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+            if (rc6CtrMode.Checked == true)
+            {
+                if (nonce.Length != 4)
+                {
+                    MessageBox.Show("Nonce treba sadrzati 4 karaktera/broja", "Greska!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                alghorithm = "RC6_CTR";
             }
 
             if (rc6PathInput.Text.EndsWith(".bmp"))
@@ -181,7 +187,7 @@ namespace WindowsFormsApp1
                 if (rc6TigerHashChk.Checked)
                     rc6TigerHashChk.Enabled = true;
 
-                if (client.DecryptBitmap(rc6PathInput.Text, rc6PathOutput.Text + "\\" + filename + ".bmp", "RC6", rc6TigerHashChk.Checked , key))
+                if (client.DecryptBitmap(rc6PathInput.Text, rc6PathOutput.Text + "\\" + filename + ".bmp", alghorithm, rc6TigerHashChk.Checked , key, nonce))
                 {
                     MessageBox.Show("Uspesno ste dekriptovali bitmapu", "Uspesno enkriptovanje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if(rc6TigerHashChk.Checked)
@@ -200,6 +206,11 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Nije izabran nijedan validan algoritam za dekriptovanje bitmape!", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+            }
+            else if(alghorithm == "RC6_CTR")
+            {
+                plainText = client.DecryptRC6_CTRmode(input, key, nonce);
+                ValidateRC6TigerHash(plainText);
             }
             else
             {
@@ -575,6 +586,8 @@ namespace WindowsFormsApp1
             if (rc6TigerHashChk.Checked)
             {
                 rc6TigerHashChk.Enabled = true;
+                if(plaintext.Contains('\0'))
+                    plaintext = plaintext.Replace("\0", string.Empty);
                 if (rc6Hash != null)
                 {
                     byte[] checkHash = client.GenerateTigerHash(plaintext);
