@@ -96,24 +96,39 @@ namespace WindowsFormsApp1
             this.bifidInputFileBtn = new System.Windows.Forms.Button();
             this.bifidOutputFileBtn = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.keyFileXXTEA = new System.Windows.Forms.TextBox();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.outputPathXXTEA = new System.Windows.Forms.TextBox();
-            this.inputPathXXTEA = new System.Windows.Forms.TextBox();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.inputXXTEA = new System.Windows.Forms.TextBox();
-            this.outputXXTEA = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.keyXXTEA = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.rc6OutputFolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.bifidOutputFolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.ksBmpRadio = new System.Windows.Forms.RadioButton();
+            this.ksBinRadio = new System.Windows.Forms.RadioButton();
+            this.ksTxtRadio = new System.Windows.Forms.RadioButton();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ksOutputName = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.ksKeyInputFile = new System.Windows.Forms.TextBox();
+            this.ksDecFileBtn = new System.Windows.Forms.Button();
+            this.ksKeyFileBtn = new System.Windows.Forms.Button();
+            this.ksEncFileBtn = new System.Windows.Forms.Button();
+            this.ksInputPathFile = new System.Windows.Forms.TextBox();
+            this.ksOutputPathFile = new System.Windows.Forms.TextBox();
+            this.ksInputFileBtn = new System.Windows.Forms.Button();
+            this.ksOutputFileBtn = new System.Windows.Forms.Button();
+            this.ksOutputFolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -124,6 +139,9 @@ namespace WindowsFormsApp1
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -858,22 +876,9 @@ namespace WindowsFormsApp1
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.keyFileXXTEA);
-            this.tabPage3.Controls.Add(this.button19);
-            this.tabPage3.Controls.Add(this.button2);
-            this.tabPage3.Controls.Add(this.button14);
-            this.tabPage3.Controls.Add(this.outputPathXXTEA);
-            this.tabPage3.Controls.Add(this.inputPathXXTEA);
-            this.tabPage3.Controls.Add(this.button15);
-            this.tabPage3.Controls.Add(this.button16);
-            this.tabPage3.Controls.Add(this.inputXXTEA);
-            this.tabPage3.Controls.Add(this.outputXXTEA);
-            this.tabPage3.Controls.Add(this.label7);
-            this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.keyXXTEA);
-            this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.button4);
-            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.checkBox1);
+            this.tabPage3.Controls.Add(this.groupBox7);
+            this.tabPage3.Controls.Add(this.groupBox8);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
@@ -882,159 +887,337 @@ namespace WindowsFormsApp1
             this.tabPage3.Text = "Knapsack";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // keyFileXXTEA
+            // checkBox1
             // 
-            this.keyFileXXTEA.Enabled = false;
-            this.keyFileXXTEA.Location = new System.Drawing.Point(880, 199);
-            this.keyFileXXTEA.Margin = new System.Windows.Forms.Padding(4);
-            this.keyFileXXTEA.Name = "keyFileXXTEA";
-            this.keyFileXXTEA.Size = new System.Drawing.Size(455, 22);
-            this.keyFileXXTEA.TabIndex = 48;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(566, 72);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(100, 21);
+            this.checkBox1.TabIndex = 38;
+            this.checkBox1.Text = "Tiger Hash";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // button19
+            // groupBox7
             // 
-            this.button19.Location = new System.Drawing.Point(673, 183);
-            this.button19.Margin = new System.Windows.Forms.Padding(4);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(172, 54);
-            this.button19.TabIndex = 47;
-            this.button19.Text = "File with key";
-            this.button19.UseVisualStyleBackColor = true;
+            this.groupBox7.Controls.Add(this.button1);
+            this.groupBox7.Controls.Add(this.button2);
+            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.button3);
+            this.groupBox7.Controls.Add(this.label7);
+            this.groupBox7.Controls.Add(this.button4);
+            this.groupBox7.Controls.Add(this.textBox2);
+            this.groupBox7.Controls.Add(this.textBox3);
+            this.groupBox7.Controls.Add(this.label8);
+            this.groupBox7.Controls.Add(this.label9);
+            this.groupBox7.Location = new System.Drawing.Point(10, 7);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(550, 661);
+            this.groupBox7.TabIndex = 37;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Text";
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(239, 124);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(186, 44);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Save Key";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1135, 258);
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(239, 50);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(183, 68);
-            this.button2.TabIndex = 46;
-            this.button2.Text = "Decrypt file";
+            this.button2.Size = new System.Drawing.Size(186, 66);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Generate Random Key";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // textBox1
             // 
-            this.button14.Location = new System.Drawing.Point(897, 258);
-            this.button14.Margin = new System.Windows.Forms.Padding(4);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(183, 68);
-            this.button14.TabIndex = 45;
-            this.button14.Text = "Encrypt file";
-            this.button14.UseVisualStyleBackColor = true;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(21, 50);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(186, 118);
+            this.textBox1.TabIndex = 13;
             // 
-            // outputPathXXTEA
+            // button3
             // 
-            this.outputPathXXTEA.Enabled = false;
-            this.outputPathXXTEA.Location = new System.Drawing.Point(880, 138);
-            this.outputPathXXTEA.Margin = new System.Windows.Forms.Padding(4);
-            this.outputPathXXTEA.Name = "outputPathXXTEA";
-            this.outputPathXXTEA.Size = new System.Drawing.Size(455, 22);
-            this.outputPathXXTEA.TabIndex = 44;
-            // 
-            // inputPathXXTEA
-            // 
-            this.inputPathXXTEA.Enabled = false;
-            this.inputPathXXTEA.Location = new System.Drawing.Point(880, 75);
-            this.inputPathXXTEA.Margin = new System.Windows.Forms.Padding(4);
-            this.inputPathXXTEA.Name = "inputPathXXTEA";
-            this.inputPathXXTEA.Size = new System.Drawing.Size(455, 22);
-            this.inputPathXXTEA.TabIndex = 43;
-            // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(672, 122);
-            this.button15.Margin = new System.Windows.Forms.Padding(4);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(173, 54);
-            this.button15.TabIndex = 42;
-            this.button15.Text = "Output file";
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(672, 59);
-            this.button16.Margin = new System.Windows.Forms.Padding(4);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(173, 55);
-            this.button16.TabIndex = 41;
-            this.button16.Text = "Input file";
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // inputXXTEA
-            // 
-            this.inputXXTEA.Location = new System.Drawing.Point(40, 34);
-            this.inputXXTEA.Margin = new System.Windows.Forms.Padding(4);
-            this.inputXXTEA.Multiline = true;
-            this.inputXXTEA.Name = "inputXXTEA";
-            this.inputXXTEA.Size = new System.Drawing.Size(500, 164);
-            this.inputXXTEA.TabIndex = 33;
-            // 
-            // outputXXTEA
-            // 
-            this.outputXXTEA.BackColor = System.Drawing.SystemColors.Window;
-            this.outputXXTEA.Location = new System.Drawing.Point(40, 281);
-            this.outputXXTEA.Margin = new System.Windows.Forms.Padding(4);
-            this.outputXXTEA.Multiline = true;
-            this.outputXXTEA.Name = "outputXXTEA";
-            this.outputXXTEA.Size = new System.Drawing.Size(500, 164);
-            this.outputXXTEA.TabIndex = 34;
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(21, 588);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(186, 66);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Encrypt Input";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(564, 322);
+            this.label7.Location = new System.Drawing.Point(18, 29);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 17);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "Output";
+            this.label7.Size = new System.Drawing.Size(32, 17);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Key";
             // 
-            // button3
+            // button4
             // 
-            this.button3.Location = new System.Drawing.Point(40, 507);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(228, 66);
-            this.button3.TabIndex = 39;
-            this.button3.Text = "Encrypt Input";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(328, 590);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(193, 64);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "Decrypt Input";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // keyXXTEA
+            // textBox2
             // 
-            this.keyXXTEA.Location = new System.Drawing.Point(40, 228);
-            this.keyXXTEA.Margin = new System.Windows.Forms.Padding(4);
-            this.keyXXTEA.Name = "keyXXTEA";
-            this.keyXXTEA.Size = new System.Drawing.Size(500, 22);
-            this.keyXXTEA.TabIndex = 35;
+            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(21, 381);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(500, 164);
+            this.textBox2.TabIndex = 12;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Enabled = false;
+            this.textBox3.Location = new System.Drawing.Point(21, 193);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(500, 164);
+            this.textBox3.TabIndex = 11;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(564, 98);
+            this.label8.Location = new System.Drawing.Point(18, 360);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(39, 17);
-            this.label8.TabIndex = 37;
-            this.label8.Text = "Input";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(313, 510);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(228, 64);
-            this.button4.TabIndex = 40;
-            this.button4.Text = "Decrypt Input";
-            this.button4.UseVisualStyleBackColor = true;
+            this.label8.Size = new System.Drawing.Size(51, 17);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Output";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(572, 228);
+            this.label9.Location = new System.Drawing.Point(18, 172);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 17);
-            this.label9.TabIndex = 36;
-            this.label9.Text = "Key";
+            this.label9.Size = new System.Drawing.Size(39, 17);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Input";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.groupBox9);
+            this.groupBox8.Controls.Add(this.label21);
+            this.groupBox8.Controls.Add(this.ksOutputName);
+            this.groupBox8.Controls.Add(this.label22);
+            this.groupBox8.Controls.Add(this.label23);
+            this.groupBox8.Controls.Add(this.label24);
+            this.groupBox8.Controls.Add(this.ksKeyInputFile);
+            this.groupBox8.Controls.Add(this.ksDecFileBtn);
+            this.groupBox8.Controls.Add(this.ksKeyFileBtn);
+            this.groupBox8.Controls.Add(this.ksEncFileBtn);
+            this.groupBox8.Controls.Add(this.ksInputPathFile);
+            this.groupBox8.Controls.Add(this.ksOutputPathFile);
+            this.groupBox8.Controls.Add(this.ksInputFileBtn);
+            this.groupBox8.Controls.Add(this.ksOutputFileBtn);
+            this.groupBox8.Location = new System.Drawing.Point(686, 7);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(680, 661);
+            this.groupBox8.TabIndex = 36;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "File";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.ksBmpRadio);
+            this.groupBox9.Controls.Add(this.ksBinRadio);
+            this.groupBox9.Controls.Add(this.ksTxtRadio);
+            this.groupBox9.Location = new System.Drawing.Point(261, 325);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(178, 32);
+            this.groupBox9.TabIndex = 35;
+            this.groupBox9.TabStop = false;
+            // 
+            // ksBmpRadio
+            // 
+            this.ksBmpRadio.AutoSize = true;
+            this.ksBmpRadio.Enabled = false;
+            this.ksBmpRadio.Location = new System.Drawing.Point(117, 10);
+            this.ksBmpRadio.Name = "ksBmpRadio";
+            this.ksBmpRadio.Size = new System.Drawing.Size(60, 21);
+            this.ksBmpRadio.TabIndex = 2;
+            this.ksBmpRadio.TabStop = true;
+            this.ksBmpRadio.Text = ".bmp";
+            this.ksBmpRadio.UseVisualStyleBackColor = true;
+            // 
+            // ksBinRadio
+            // 
+            this.ksBinRadio.AutoSize = true;
+            this.ksBinRadio.Location = new System.Drawing.Point(59, 10);
+            this.ksBinRadio.Name = "ksBinRadio";
+            this.ksBinRadio.Size = new System.Drawing.Size(52, 21);
+            this.ksBinRadio.TabIndex = 1;
+            this.ksBinRadio.TabStop = true;
+            this.ksBinRadio.Text = ".bin";
+            this.ksBinRadio.UseVisualStyleBackColor = true;
+            // 
+            // ksTxtRadio
+            // 
+            this.ksTxtRadio.AutoSize = true;
+            this.ksTxtRadio.Location = new System.Drawing.Point(6, 10);
+            this.ksTxtRadio.Name = "ksTxtRadio";
+            this.ksTxtRadio.Size = new System.Drawing.Size(47, 21);
+            this.ksTxtRadio.TabIndex = 0;
+            this.ksTxtRadio.TabStop = true;
+            this.ksTxtRadio.Text = ".txt";
+            this.ksTxtRadio.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(17, 314);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(127, 17);
+            this.label21.TabIndex = 34;
+            this.label21.Text = "Name of output file";
+            // 
+            // ksOutputName
+            // 
+            this.ksOutputName.Location = new System.Drawing.Point(20, 335);
+            this.ksOutputName.Margin = new System.Windows.Forms.Padding(4);
+            this.ksOutputName.Name = "ksOutputName";
+            this.ksOutputName.Size = new System.Drawing.Size(234, 22);
+            this.ksOutputName.TabIndex = 33;
+            this.ksOutputName.Text = "Output";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(18, 193);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(74, 17);
+            this.label22.TabIndex = 32;
+            this.label22.Text = "Outputs to";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(17, 76);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(78, 17);
+            this.label23.TabIndex = 31;
+            this.label23.Text = "Inputs from";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(17, 28);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(94, 17);
+            this.label24.TabIndex = 30;
+            this.label24.Text = "Key From File";
+            // 
+            // ksKeyInputFile
+            // 
+            this.ksKeyInputFile.Enabled = false;
+            this.ksKeyInputFile.Location = new System.Drawing.Point(20, 50);
+            this.ksKeyInputFile.Margin = new System.Windows.Forms.Padding(4);
+            this.ksKeyInputFile.Name = "ksKeyInputFile";
+            this.ksKeyInputFile.Size = new System.Drawing.Size(455, 22);
+            this.ksKeyInputFile.TabIndex = 29;
+            // 
+            // ksDecFileBtn
+            // 
+            this.ksDecFileBtn.Enabled = false;
+            this.ksDecFileBtn.Location = new System.Drawing.Point(424, 586);
+            this.ksDecFileBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ksDecFileBtn.Name = "ksDecFileBtn";
+            this.ksDecFileBtn.Size = new System.Drawing.Size(183, 68);
+            this.ksDecFileBtn.TabIndex = 27;
+            this.ksDecFileBtn.Text = "Decrypt file";
+            this.ksDecFileBtn.UseVisualStyleBackColor = true;
+            this.ksDecFileBtn.Click += new System.EventHandler(this.ksDecFileBtn_Click);
+            // 
+            // ksKeyFileBtn
+            // 
+            this.ksKeyFileBtn.Location = new System.Drawing.Point(498, 34);
+            this.ksKeyFileBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ksKeyFileBtn.Name = "ksKeyFileBtn";
+            this.ksKeyFileBtn.Size = new System.Drawing.Size(172, 54);
+            this.ksKeyFileBtn.TabIndex = 28;
+            this.ksKeyFileBtn.Text = "File with key";
+            this.ksKeyFileBtn.UseVisualStyleBackColor = true;
+            this.ksKeyFileBtn.Click += new System.EventHandler(this.ksKeyFileBtn_Click);
+            // 
+            // ksEncFileBtn
+            // 
+            this.ksEncFileBtn.Enabled = false;
+            this.ksEncFileBtn.Location = new System.Drawing.Point(83, 586);
+            this.ksEncFileBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ksEncFileBtn.Name = "ksEncFileBtn";
+            this.ksEncFileBtn.Size = new System.Drawing.Size(183, 68);
+            this.ksEncFileBtn.TabIndex = 26;
+            this.ksEncFileBtn.Text = "Encrypt file";
+            this.ksEncFileBtn.UseVisualStyleBackColor = true;
+            this.ksEncFileBtn.Click += new System.EventHandler(this.ksEncFileBtn_Click);
+            // 
+            // ksInputPathFile
+            // 
+            this.ksInputPathFile.Enabled = false;
+            this.ksInputPathFile.Location = new System.Drawing.Point(20, 97);
+            this.ksInputPathFile.Margin = new System.Windows.Forms.Padding(4);
+            this.ksInputPathFile.Multiline = true;
+            this.ksInputPathFile.Name = "ksInputPathFile";
+            this.ksInputPathFile.Size = new System.Drawing.Size(455, 92);
+            this.ksInputPathFile.TabIndex = 24;
+            // 
+            // ksOutputPathFile
+            // 
+            this.ksOutputPathFile.Enabled = false;
+            this.ksOutputPathFile.Location = new System.Drawing.Point(20, 214);
+            this.ksOutputPathFile.Margin = new System.Windows.Forms.Padding(4);
+            this.ksOutputPathFile.Name = "ksOutputPathFile";
+            this.ksOutputPathFile.Size = new System.Drawing.Size(455, 22);
+            this.ksOutputPathFile.TabIndex = 25;
+            // 
+            // ksInputFileBtn
+            // 
+            this.ksInputFileBtn.Location = new System.Drawing.Point(500, 113);
+            this.ksInputFileBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ksInputFileBtn.Name = "ksInputFileBtn";
+            this.ksInputFileBtn.Size = new System.Drawing.Size(173, 55);
+            this.ksInputFileBtn.TabIndex = 22;
+            this.ksInputFileBtn.Text = "Input file";
+            this.ksInputFileBtn.UseVisualStyleBackColor = true;
+            this.ksInputFileBtn.Click += new System.EventHandler(this.ksInputFileBtn_Click);
+            // 
+            // ksOutputFileBtn
+            // 
+            this.ksOutputFileBtn.Location = new System.Drawing.Point(500, 198);
+            this.ksOutputFileBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ksOutputFileBtn.Name = "ksOutputFileBtn";
+            this.ksOutputFileBtn.Size = new System.Drawing.Size(173, 54);
+            this.ksOutputFileBtn.TabIndex = 23;
+            this.ksOutputFileBtn.Text = "Output folder";
+            this.ksOutputFileBtn.UseVisualStyleBackColor = true;
+            this.ksOutputFileBtn.Click += new System.EventHandler(this.ksOutputFileBtn_Click);
             // 
             // Form1
             // 
@@ -1063,6 +1246,12 @@ namespace WindowsFormsApp1
             this.groupBox6.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1089,22 +1278,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TextBox keyFileXXTEA;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.TextBox outputPathXXTEA;
-        private System.Windows.Forms.TextBox inputPathXXTEA;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.TextBox inputXXTEA;
-        private System.Windows.Forms.TextBox outputXXTEA;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox keyXXTEA;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label13;
@@ -1154,6 +1327,37 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox rc6CtrMode;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.RadioButton ksBmpRadio;
+        private System.Windows.Forms.RadioButton ksBinRadio;
+        private System.Windows.Forms.RadioButton ksTxtRadio;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox ksOutputName;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox ksKeyInputFile;
+        private System.Windows.Forms.Button ksDecFileBtn;
+        private System.Windows.Forms.Button ksKeyFileBtn;
+        private System.Windows.Forms.Button ksEncFileBtn;
+        private System.Windows.Forms.TextBox ksInputPathFile;
+        private System.Windows.Forms.TextBox ksOutputPathFile;
+        private System.Windows.Forms.Button ksInputFileBtn;
+        private System.Windows.Forms.Button ksOutputFileBtn;
+        private System.Windows.Forms.FolderBrowserDialog ksOutputFolderBrowser;
     }
 }
 
