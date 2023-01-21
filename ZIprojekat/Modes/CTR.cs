@@ -20,10 +20,8 @@ namespace ZIprojekat
 
         public void SetNonce(string nonce)
         {
-            //rc6 = new RC6();
             if (nonce.Length > 4) nonce = nonce.Substring(0, 4);
             counter = 0;
-            //nonceAndCounter = new byte[16];
             Array.Copy(Encoding.Unicode.GetBytes(nonce), nonceAndCounter, 8);
         }
 

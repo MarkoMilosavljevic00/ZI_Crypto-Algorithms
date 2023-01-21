@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
         private void rc6InputFileBtn_Click(object sender, EventArgs e)
         {
             string filter = "Text files (*.txt)|*.txt|Binary files (*.bin)|*.bin|Bitmap files (*.bmp)|*.bmp";
-            ChooseInputFile(rc6PathKeyInput, rc6PathInput, rc6PathOutput, rc6EncFileBtn, rc6DecFileBtn, rc6BmpRadio, filter, false);
+            ChooseInputFile(rc6PathKeyInput, rc6PathInput, rc6PathOutput, rc6EncFileBtn, rc6DecFileBtn,rc6TxtRadio, rc6BinRadio, rc6BmpRadio, filter, false);
         }
 
         private void rc6OutputFileBtn_Click(object sender, EventArgs e)
@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
         private void bifidInputFileBtn_Click(object sender, EventArgs e)
         {
             string filter = "Text files (*.txt)|*.txt|Binary files (*.bin)|*.bin";
-            ChooseInputFile(bifidKeyInputFile, bifidInputPathFile, bifidOutputPathFile, bifidEncFileBtn, bifidDecFileBtn, bifidBmpRadio, filter, false);
+            ChooseInputFile(bifidKeyInputFile, bifidInputPathFile, bifidOutputPathFile, bifidEncFileBtn, bifidDecFileBtn,bifidTxtRadio, bifidBinRadio, bifidBmpRadio, filter, false);
         }
 
         private void bifidOutputFileBtn_Click(object sender, EventArgs e)
@@ -151,7 +151,7 @@ namespace WindowsFormsApp1
         private void ksInputFileBtn_Click(object sender, EventArgs e)
         {
             string filter = "Text files (*.txt)|*.txt|Binary files (*.bin)|*.bin|Bitmap files (*.bmp)|*.bmp";
-            ChooseInputFile(ksKeyInputFile, ksInputPathFile, ksOutputPathFile, ksEncFileBtn, ksDecFileBtn, ksBmpRadio, filter, true);
+            ChooseInputFile(ksKeyInputFile, ksInputPathFile, ksOutputPathFile, ksEncFileBtn, ksDecFileBtn,ksTxtRadio, ksBinRadio, ksBmpRadio, filter, true);
         }
 
         private void ksOutputFileBtn_Click(object sender, EventArgs e)
@@ -221,7 +221,7 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        private void ChooseInputFile(TextBox keyPath, TextBox inputPath, TextBox outputPath, Button encFileBtn, Button decFileBtn, RadioButton bmpRadio, string filter, bool multi)
+        private void ChooseInputFile(TextBox keyPath, TextBox inputPath, TextBox outputPath, Button encFileBtn, Button decFileBtn, RadioButton txtRadio, RadioButton binRadio, RadioButton bmpRadio, string filter, bool multi)
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = filter;
@@ -251,12 +251,16 @@ namespace WindowsFormsApp1
                     {
                         bmpRadio.Enabled = true;
                         bmpRadio.Checked = true;
+                        txtRadio.Enabled = false;
+                        binRadio.Enabled = false;
 
                     }
                     else
                     {
                         bmpRadio.Enabled = false;
                         bmpRadio.Checked = false;
+                        txtRadio.Enabled = true;
+                        binRadio.Enabled = true;
                     }
                 }
             }
@@ -545,7 +549,7 @@ namespace WindowsFormsApp1
         private void BifidEncryptProcedureTxt()
         {
             string input = bifidInputTxt.Text;
-            string[] plaintextLines = input.Split('\n');
+            string[] plaintextLines = input.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries); ;
             GenerateBifidTigerHash(plaintextLines);
             string[] ciphertextLines = client.EncryptBifid(plaintextLines);
             bifidOutputTxt.Text = "";
@@ -559,7 +563,7 @@ namespace WindowsFormsApp1
         private void BifidDecryptProcedureTxt()
         {
             string input = bifidInputTxt.Text;
-            string[] plaintextLines = input.Split('\n');
+            string[] plaintextLines = input.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries); ;
             string[] ciphertextLines = client.DecryptBifid(plaintextLines);
             ValidateBifidTigerHash(ciphertextLines);
             bifidOutputTxt.Text = "";
@@ -573,7 +577,7 @@ namespace WindowsFormsApp1
 
         private void BifidEncryptProcedure()
         {
-            string[] input = GetInputFromTBFile(bifidInputPathFile).Split('\n');
+            string[] input = GetInputFromTBFile(bifidInputPathFile).Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries); 
             string key = GetKeyFromFile(bifidKeyInputFile);
             string[] ciphertext;
             string filename = bifidOutputName.Text;
@@ -603,7 +607,7 @@ namespace WindowsFormsApp1
         }
         private void BifidDecryptProcedure()
         {
-            string[] input = GetInputFromTBFile(bifidInputPathFile).Split('\n');
+            string[] input = GetInputFromTBFile(bifidInputPathFile).Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries); ;
             string key = GetKeyFromFile(bifidKeyInputFile);
             string[] plaintext;
             string filename = bifidOutputName.Text;

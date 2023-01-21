@@ -55,7 +55,7 @@ namespace ZIprojekat
             if (hash)
             {
                 TigerHash tigerHash = new TigerHash();
-                rc6BmpHash = tigerHash.Process(Encoding.Default.GetString(pixelData));
+                rc6BmpHash = tigerHash.HashValue(Encoding.Default.GetString(pixelData));
             }
 
             switch (alghorithm)
@@ -112,7 +112,7 @@ namespace ZIprojekat
                 if (rc6BmpHash != null)
                 {
                     TigerHash tigerHash = new TigerHash();
-                    byte[] checkHash = tigerHash.Process(Encoding.Default.GetString(decData));
+                    byte[] checkHash = tigerHash.HashValue(Encoding.Default.GetString(decData));
                     if (!checkHash.SequenceEqual(rc6BmpHash))
                     {
                         return false;
@@ -136,7 +136,6 @@ namespace ZIprojekat
             return true;
         }
 
-
         public string EncryptRC6(string source, string key)
         {
             //RC6 rc = new RC6(Encoding.UTF8.GetBytes(key));
@@ -146,6 +145,13 @@ namespace ZIprojekat
             return res;
         }
 
+        public string DecryptRC6(string source, string key)
+        {
+            //RC6 rc = new RC6(Encoding.UTF8.GetBytes(key));
+            rc6.GenerateKey(Encoding.UTF8.GetBytes(key));
+            string res = Encoding.Default.GetString(rc6.Decrypt(Encoding.Default.GetBytes(source)));
+            return res;
+        }
         public string EncryptRC6_CTRmode(string source, string key, string nonce)
         {
             ctr.SetNonce(nonce);
@@ -153,14 +159,6 @@ namespace ZIprojekat
             string res = Encoding.Default.GetString(ctr.EncryptRC6(byteText, key));
             return res;
 
-        }
-
-        public string DecryptRC6(string source, string key)
-        {
-            //RC6 rc = new RC6(Encoding.UTF8.GetBytes(key));
-            rc6.GenerateKey(Encoding.UTF8.GetBytes(key));
-            string res = Encoding.Default.GetString(rc6.Decrypt(Encoding.Default.GetBytes(source)));
-            return res;
         }
 
         public string DecryptRC6_CTRmode(string source, string key, string nonce)
@@ -195,13 +193,6 @@ namespace ZIprojekat
             return res;
         }
 
-        public byte[] GenerateTigerHash(string source)
-        {
-            TigerHash th = new TigerHash();
-            byte[] res = th.Process(source);
-            return res;
-        }
-
         public List<string> GenerateRandomKeyKS()
         {
             List<string> key = ks.GenerateKeys();
@@ -222,6 +213,13 @@ namespace ZIprojekat
         public string DecryptKS(string source)
         {
             string res = ks.Decrypt(source);
+            return res;
+        }
+
+        public byte[] GenerateTigerHash(string source)
+        {
+            TigerHash th = new TigerHash();
+            byte[] res = th.HashValue(source);
             return res;
         }
 

@@ -121,6 +121,12 @@ namespace WindowsFormsApp1
             this.rc6OutputFolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.bifidOutputFolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.ksOutputFolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            this.RC6 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -150,6 +156,8 @@ namespace WindowsFormsApp1
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.RC6);
             this.tabPage1.Controls.Add(this.label20);
             this.tabPage1.Controls.Add(this.rc6NonceTxt);
             this.tabPage1.Controls.Add(this.label19);
@@ -170,7 +178,7 @@ namespace WindowsFormsApp1
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(567, 259);
+            this.label20.Location = new System.Drawing.Point(573, 273);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(53, 17);
             this.label20.TabIndex = 36;
@@ -179,7 +187,7 @@ namespace WindowsFormsApp1
             // rc6NonceTxt
             // 
             this.rc6NonceTxt.Enabled = false;
-            this.rc6NonceTxt.Location = new System.Drawing.Point(570, 280);
+            this.rc6NonceTxt.Location = new System.Drawing.Point(574, 297);
             this.rc6NonceTxt.Margin = new System.Windows.Forms.Padding(4);
             this.rc6NonceTxt.MaxLength = 4;
             this.rc6NonceTxt.Name = "rc6NonceTxt";
@@ -190,7 +198,7 @@ namespace WindowsFormsApp1
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(560, 212);
+            this.label19.Location = new System.Drawing.Point(564, 229);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(117, 17);
             this.label19.TabIndex = 35;
@@ -200,7 +208,7 @@ namespace WindowsFormsApp1
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(560, 64);
+            this.label18.Location = new System.Drawing.Point(564, 185);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(112, 17);
             this.label18.TabIndex = 34;
@@ -209,7 +217,7 @@ namespace WindowsFormsApp1
             // rc6CtrMode
             // 
             this.rc6CtrMode.AutoSize = true;
-            this.rc6CtrMode.Location = new System.Drawing.Point(591, 232);
+            this.rc6CtrMode.Location = new System.Drawing.Point(595, 249);
             this.rc6CtrMode.Name = "rc6CtrMode";
             this.rc6CtrMode.Size = new System.Drawing.Size(58, 21);
             this.rc6CtrMode.TabIndex = 5;
@@ -220,7 +228,7 @@ namespace WindowsFormsApp1
             // rc6TigerHashChk
             // 
             this.rc6TigerHashChk.AutoSize = true;
-            this.rc6TigerHashChk.Location = new System.Drawing.Point(572, 84);
+            this.rc6TigerHashChk.Location = new System.Drawing.Point(576, 205);
             this.rc6TigerHashChk.Name = "rc6TigerHashChk";
             this.rc6TigerHashChk.Size = new System.Drawing.Size(100, 21);
             this.rc6TigerHashChk.TabIndex = 4;
@@ -237,7 +245,7 @@ namespace WindowsFormsApp1
             this.groupBox2.Controls.Add(this.rc6Input);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(11, 32);
+            this.groupBox2.Location = new System.Drawing.Point(8, 73);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(550, 555);
             this.groupBox2.TabIndex = 31;
@@ -339,7 +347,7 @@ namespace WindowsFormsApp1
             this.groupBox1.Controls.Add(this.rc6PathOutput);
             this.groupBox1.Controls.Add(this.rc6InputFileBtn);
             this.groupBox1.Controls.Add(this.rc6OutputFileBtn);
-            this.groupBox1.Location = new System.Drawing.Point(681, 32);
+            this.groupBox1.Location = new System.Drawing.Point(690, 73);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(680, 555);
             this.groupBox1.TabIndex = 30;
@@ -522,6 +530,8 @@ namespace WindowsFormsApp1
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label25);
             this.tabPage2.Controls.Add(this.bifidTigerHashChk);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.groupBox5);
@@ -537,7 +547,7 @@ namespace WindowsFormsApp1
             // bifidTigerHashChk
             // 
             this.bifidTigerHashChk.AutoSize = true;
-            this.bifidTigerHashChk.Location = new System.Drawing.Point(569, 72);
+            this.bifidTigerHashChk.Location = new System.Drawing.Point(583, 148);
             this.bifidTigerHashChk.Name = "bifidTigerHashChk";
             this.bifidTigerHashChk.Size = new System.Drawing.Size(100, 21);
             this.bifidTigerHashChk.TabIndex = 35;
@@ -557,16 +567,16 @@ namespace WindowsFormsApp1
             this.groupBox4.Controls.Add(this.bifidInputTxt);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Location = new System.Drawing.Point(13, 7);
+            this.groupBox4.Location = new System.Drawing.Point(21, 80);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(550, 661);
+            this.groupBox4.Size = new System.Drawing.Size(550, 564);
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Text";
             // 
             // bifidSaveKeyBtn
             // 
-            this.bifidSaveKeyBtn.Location = new System.Drawing.Point(239, 124);
+            this.bifidSaveKeyBtn.Location = new System.Drawing.Point(328, 136);
             this.bifidSaveKeyBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bifidSaveKeyBtn.Name = "bifidSaveKeyBtn";
             this.bifidSaveKeyBtn.Size = new System.Drawing.Size(186, 44);
@@ -577,7 +587,7 @@ namespace WindowsFormsApp1
             // 
             // bifidGenKeyBtn
             // 
-            this.bifidGenKeyBtn.Location = new System.Drawing.Point(239, 50);
+            this.bifidGenKeyBtn.Location = new System.Drawing.Point(328, 62);
             this.bifidGenKeyBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bifidGenKeyBtn.Name = "bifidGenKeyBtn";
             this.bifidGenKeyBtn.Size = new System.Drawing.Size(186, 66);
@@ -589,20 +599,20 @@ namespace WindowsFormsApp1
             // bifidKeyInput
             // 
             this.bifidKeyInput.Enabled = false;
-            this.bifidKeyInput.Location = new System.Drawing.Point(21, 50);
+            this.bifidKeyInput.Location = new System.Drawing.Point(21, 62);
             this.bifidKeyInput.Margin = new System.Windows.Forms.Padding(4);
             this.bifidKeyInput.Multiline = true;
             this.bifidKeyInput.Name = "bifidKeyInput";
-            this.bifidKeyInput.Size = new System.Drawing.Size(186, 118);
+            this.bifidKeyInput.Size = new System.Drawing.Size(299, 118);
             this.bifidKeyInput.TabIndex = 13;
             // 
             // bifidEncBtn
             // 
             this.bifidEncBtn.Enabled = false;
-            this.bifidEncBtn.Location = new System.Drawing.Point(21, 588);
+            this.bifidEncBtn.Location = new System.Drawing.Point(21, 484);
             this.bifidEncBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bifidEncBtn.Name = "bifidEncBtn";
-            this.bifidEncBtn.Size = new System.Drawing.Size(186, 66);
+            this.bifidEncBtn.Size = new System.Drawing.Size(186, 64);
             this.bifidEncBtn.TabIndex = 17;
             this.bifidEncBtn.Text = "Encrypt Input";
             this.bifidEncBtn.UseVisualStyleBackColor = true;
@@ -611,7 +621,7 @@ namespace WindowsFormsApp1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 29);
+            this.label1.Location = new System.Drawing.Point(18, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 17);
@@ -621,7 +631,7 @@ namespace WindowsFormsApp1
             // bifidDecBtn
             // 
             this.bifidDecBtn.Enabled = false;
-            this.bifidDecBtn.Location = new System.Drawing.Point(328, 590);
+            this.bifidDecBtn.Location = new System.Drawing.Point(328, 484);
             this.bifidDecBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bifidDecBtn.Name = "bifidDecBtn";
             this.bifidDecBtn.Size = new System.Drawing.Size(193, 64);
@@ -633,26 +643,26 @@ namespace WindowsFormsApp1
             // bifidOutputTxt
             // 
             this.bifidOutputTxt.BackColor = System.Drawing.SystemColors.Window;
-            this.bifidOutputTxt.Location = new System.Drawing.Point(21, 381);
+            this.bifidOutputTxt.Location = new System.Drawing.Point(21, 351);
             this.bifidOutputTxt.Margin = new System.Windows.Forms.Padding(4);
             this.bifidOutputTxt.Multiline = true;
             this.bifidOutputTxt.Name = "bifidOutputTxt";
-            this.bifidOutputTxt.Size = new System.Drawing.Size(500, 164);
+            this.bifidOutputTxt.Size = new System.Drawing.Size(500, 113);
             this.bifidOutputTxt.TabIndex = 12;
             // 
             // bifidInputTxt
             // 
-            this.bifidInputTxt.Location = new System.Drawing.Point(21, 193);
+            this.bifidInputTxt.Location = new System.Drawing.Point(21, 205);
             this.bifidInputTxt.Margin = new System.Windows.Forms.Padding(4);
             this.bifidInputTxt.Multiline = true;
             this.bifidInputTxt.Name = "bifidInputTxt";
-            this.bifidInputTxt.Size = new System.Drawing.Size(500, 164);
+            this.bifidInputTxt.Size = new System.Drawing.Size(500, 121);
             this.bifidInputTxt.TabIndex = 11;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 360);
+            this.label2.Location = new System.Drawing.Point(18, 330);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 17);
@@ -662,7 +672,7 @@ namespace WindowsFormsApp1
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 172);
+            this.label3.Location = new System.Drawing.Point(18, 184);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 17);
@@ -685,9 +695,9 @@ namespace WindowsFormsApp1
             this.groupBox5.Controls.Add(this.bifidOutputPathFile);
             this.groupBox5.Controls.Add(this.bifidInputFileBtn);
             this.groupBox5.Controls.Add(this.bifidOutputFileBtn);
-            this.groupBox5.Location = new System.Drawing.Point(689, 7);
+            this.groupBox5.Location = new System.Drawing.Point(689, 80);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(680, 661);
+            this.groupBox5.Size = new System.Drawing.Size(680, 564);
             this.groupBox5.TabIndex = 33;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "File";
@@ -697,7 +707,7 @@ namespace WindowsFormsApp1
             this.groupBox6.Controls.Add(this.bifidBmpRadio);
             this.groupBox6.Controls.Add(this.bifidBinRadio);
             this.groupBox6.Controls.Add(this.bifidTxtRadio);
-            this.groupBox6.Location = new System.Drawing.Point(261, 262);
+            this.groupBox6.Location = new System.Drawing.Point(264, 306);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(178, 32);
             this.groupBox6.TabIndex = 35;
@@ -740,7 +750,7 @@ namespace WindowsFormsApp1
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(17, 251);
+            this.label14.Location = new System.Drawing.Point(20, 295);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(127, 17);
             this.label14.TabIndex = 34;
@@ -748,7 +758,7 @@ namespace WindowsFormsApp1
             // 
             // bifidOutputName
             // 
-            this.bifidOutputName.Location = new System.Drawing.Point(20, 272);
+            this.bifidOutputName.Location = new System.Drawing.Point(23, 316);
             this.bifidOutputName.Margin = new System.Windows.Forms.Padding(4);
             this.bifidOutputName.Name = "bifidOutputName";
             this.bifidOutputName.Size = new System.Drawing.Size(234, 22);
@@ -758,7 +768,7 @@ namespace WindowsFormsApp1
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(17, 154);
+            this.label15.Location = new System.Drawing.Point(20, 198);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(93, 17);
             this.label15.TabIndex = 32;
@@ -767,7 +777,7 @@ namespace WindowsFormsApp1
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(17, 91);
+            this.label16.Location = new System.Drawing.Point(20, 135);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(101, 17);
             this.label16.TabIndex = 31;
@@ -776,7 +786,7 @@ namespace WindowsFormsApp1
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(17, 28);
+            this.label17.Location = new System.Drawing.Point(20, 72);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(94, 17);
             this.label17.TabIndex = 30;
@@ -785,7 +795,7 @@ namespace WindowsFormsApp1
             // bifidKeyInputFile
             // 
             this.bifidKeyInputFile.Enabled = false;
-            this.bifidKeyInputFile.Location = new System.Drawing.Point(20, 50);
+            this.bifidKeyInputFile.Location = new System.Drawing.Point(23, 94);
             this.bifidKeyInputFile.Margin = new System.Windows.Forms.Padding(4);
             this.bifidKeyInputFile.Name = "bifidKeyInputFile";
             this.bifidKeyInputFile.Size = new System.Drawing.Size(455, 22);
@@ -794,10 +804,10 @@ namespace WindowsFormsApp1
             // bifidDecFileBtn
             // 
             this.bifidDecFileBtn.Enabled = false;
-            this.bifidDecFileBtn.Location = new System.Drawing.Point(424, 586);
+            this.bifidDecFileBtn.Location = new System.Drawing.Point(418, 484);
             this.bifidDecFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bifidDecFileBtn.Name = "bifidDecFileBtn";
-            this.bifidDecFileBtn.Size = new System.Drawing.Size(183, 68);
+            this.bifidDecFileBtn.Size = new System.Drawing.Size(183, 64);
             this.bifidDecFileBtn.TabIndex = 27;
             this.bifidDecFileBtn.Text = "Decrypt file";
             this.bifidDecFileBtn.UseVisualStyleBackColor = true;
@@ -805,7 +815,7 @@ namespace WindowsFormsApp1
             // 
             // bifidKeyFileBtn
             // 
-            this.bifidKeyFileBtn.Location = new System.Drawing.Point(498, 34);
+            this.bifidKeyFileBtn.Location = new System.Drawing.Point(501, 78);
             this.bifidKeyFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bifidKeyFileBtn.Name = "bifidKeyFileBtn";
             this.bifidKeyFileBtn.Size = new System.Drawing.Size(172, 54);
@@ -817,10 +827,10 @@ namespace WindowsFormsApp1
             // bifidEncFileBtn
             // 
             this.bifidEncFileBtn.Enabled = false;
-            this.bifidEncFileBtn.Location = new System.Drawing.Point(83, 586);
+            this.bifidEncFileBtn.Location = new System.Drawing.Point(49, 484);
             this.bifidEncFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bifidEncFileBtn.Name = "bifidEncFileBtn";
-            this.bifidEncFileBtn.Size = new System.Drawing.Size(183, 68);
+            this.bifidEncFileBtn.Size = new System.Drawing.Size(183, 64);
             this.bifidEncFileBtn.TabIndex = 26;
             this.bifidEncFileBtn.Text = "Encrypt file";
             this.bifidEncFileBtn.UseVisualStyleBackColor = true;
@@ -829,7 +839,7 @@ namespace WindowsFormsApp1
             // bifidInputPathFile
             // 
             this.bifidInputPathFile.Enabled = false;
-            this.bifidInputPathFile.Location = new System.Drawing.Point(20, 112);
+            this.bifidInputPathFile.Location = new System.Drawing.Point(23, 156);
             this.bifidInputPathFile.Margin = new System.Windows.Forms.Padding(4);
             this.bifidInputPathFile.Name = "bifidInputPathFile";
             this.bifidInputPathFile.Size = new System.Drawing.Size(455, 22);
@@ -838,7 +848,7 @@ namespace WindowsFormsApp1
             // bifidOutputPathFile
             // 
             this.bifidOutputPathFile.Enabled = false;
-            this.bifidOutputPathFile.Location = new System.Drawing.Point(20, 175);
+            this.bifidOutputPathFile.Location = new System.Drawing.Point(23, 219);
             this.bifidOutputPathFile.Margin = new System.Windows.Forms.Padding(4);
             this.bifidOutputPathFile.Name = "bifidOutputPathFile";
             this.bifidOutputPathFile.Size = new System.Drawing.Size(455, 22);
@@ -846,7 +856,7 @@ namespace WindowsFormsApp1
             // 
             // bifidInputFileBtn
             // 
-            this.bifidInputFileBtn.Location = new System.Drawing.Point(498, 96);
+            this.bifidInputFileBtn.Location = new System.Drawing.Point(501, 140);
             this.bifidInputFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bifidInputFileBtn.Name = "bifidInputFileBtn";
             this.bifidInputFileBtn.Size = new System.Drawing.Size(173, 55);
@@ -857,7 +867,7 @@ namespace WindowsFormsApp1
             // 
             // bifidOutputFileBtn
             // 
-            this.bifidOutputFileBtn.Location = new System.Drawing.Point(498, 159);
+            this.bifidOutputFileBtn.Location = new System.Drawing.Point(501, 203);
             this.bifidOutputFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bifidOutputFileBtn.Name = "bifidOutputFileBtn";
             this.bifidOutputFileBtn.Size = new System.Drawing.Size(173, 54);
@@ -868,7 +878,10 @@ namespace WindowsFormsApp1
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.label28);
+            this.tabPage3.Controls.Add(this.label27);
+            this.tabPage3.Controls.Add(this.ksTigerHashChk);
+            this.tabPage3.Controls.Add(this.label26);
             this.tabPage3.Controls.Add(this.groupBox8);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
@@ -880,14 +893,13 @@ namespace WindowsFormsApp1
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.ksTigerHashChk);
             this.groupBox8.Controls.Add(this.ksSaveKeyBtn);
             this.groupBox8.Controls.Add(this.groupBox9);
-            this.groupBox8.Controls.Add(this.ksGenKeyBtn);
-            this.groupBox8.Controls.Add(this.label21);
             this.groupBox8.Controls.Add(this.ksKeyInput);
-            this.groupBox8.Controls.Add(this.label22);
             this.groupBox8.Controls.Add(this.label7);
+            this.groupBox8.Controls.Add(this.label21);
+            this.groupBox8.Controls.Add(this.ksGenKeyBtn);
+            this.groupBox8.Controls.Add(this.label22);
             this.groupBox8.Controls.Add(this.label23);
             this.groupBox8.Controls.Add(this.label24);
             this.groupBox8.Controls.Add(this.ksKeyInputFile);
@@ -898,9 +910,9 @@ namespace WindowsFormsApp1
             this.groupBox8.Controls.Add(this.ksOutputPathFile);
             this.groupBox8.Controls.Add(this.ksInputFileBtn);
             this.groupBox8.Controls.Add(this.ksOutputFileBtn);
-            this.groupBox8.Location = new System.Drawing.Point(374, 14);
+            this.groupBox8.Location = new System.Drawing.Point(370, 55);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(680, 661);
+            this.groupBox8.Size = new System.Drawing.Size(702, 589);
             this.groupBox8.TabIndex = 36;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "File";
@@ -908,7 +920,7 @@ namespace WindowsFormsApp1
             // ksTigerHashChk
             // 
             this.ksTigerHashChk.AutoSize = true;
-            this.ksTigerHashChk.Location = new System.Drawing.Point(282, 21);
+            this.ksTigerHashChk.Location = new System.Drawing.Point(264, 130);
             this.ksTigerHashChk.Name = "ksTigerHashChk";
             this.ksTigerHashChk.Size = new System.Drawing.Size(100, 21);
             this.ksTigerHashChk.TabIndex = 38;
@@ -917,7 +929,7 @@ namespace WindowsFormsApp1
             // 
             // ksSaveKeyBtn
             // 
-            this.ksSaveKeyBtn.Location = new System.Drawing.Point(501, 150);
+            this.ksSaveKeyBtn.Location = new System.Drawing.Point(501, 124);
             this.ksSaveKeyBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ksSaveKeyBtn.Name = "ksSaveKeyBtn";
             this.ksSaveKeyBtn.Size = new System.Drawing.Size(170, 44);
@@ -931,7 +943,7 @@ namespace WindowsFormsApp1
             this.groupBox9.Controls.Add(this.ksBmpRadio);
             this.groupBox9.Controls.Add(this.ksBinRadio);
             this.groupBox9.Controls.Add(this.ksTxtRadio);
-            this.groupBox9.Location = new System.Drawing.Point(501, 521);
+            this.groupBox9.Location = new System.Drawing.Point(22, 447);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(178, 32);
             this.groupBox9.TabIndex = 35;
@@ -973,10 +985,10 @@ namespace WindowsFormsApp1
             // 
             // ksGenKeyBtn
             // 
-            this.ksGenKeyBtn.Location = new System.Drawing.Point(499, 76);
+            this.ksGenKeyBtn.Location = new System.Drawing.Point(501, 50);
             this.ksGenKeyBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ksGenKeyBtn.Name = "ksGenKeyBtn";
-            this.ksGenKeyBtn.Size = new System.Drawing.Size(172, 66);
+            this.ksGenKeyBtn.Size = new System.Drawing.Size(170, 66);
             this.ksGenKeyBtn.TabIndex = 19;
             this.ksGenKeyBtn.Text = "Generate Random Key";
             this.ksGenKeyBtn.UseVisualStyleBackColor = true;
@@ -985,7 +997,7 @@ namespace WindowsFormsApp1
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(498, 501);
+            this.label21.Location = new System.Drawing.Point(19, 427);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(158, 17);
             this.label21.TabIndex = 34;
@@ -994,7 +1006,7 @@ namespace WindowsFormsApp1
             // ksKeyInput
             // 
             this.ksKeyInput.Enabled = false;
-            this.ksKeyInput.Location = new System.Drawing.Point(21, 76);
+            this.ksKeyInput.Location = new System.Drawing.Point(19, 49);
             this.ksKeyInput.Margin = new System.Windows.Forms.Padding(4);
             this.ksKeyInput.Multiline = true;
             this.ksKeyInput.Name = "ksKeyInput";
@@ -1004,7 +1016,7 @@ namespace WindowsFormsApp1
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(19, 413);
+            this.label22.Location = new System.Drawing.Point(19, 370);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(74, 17);
             this.label22.TabIndex = 32;
@@ -1013,7 +1025,7 @@ namespace WindowsFormsApp1
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 55);
+            this.label7.Location = new System.Drawing.Point(16, 28);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 17);
@@ -1023,7 +1035,7 @@ namespace WindowsFormsApp1
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(18, 296);
+            this.label23.Location = new System.Drawing.Point(18, 253);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(78, 17);
             this.label23.TabIndex = 31;
@@ -1032,7 +1044,7 @@ namespace WindowsFormsApp1
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(18, 248);
+            this.label24.Location = new System.Drawing.Point(18, 205);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(94, 17);
             this.label24.TabIndex = 30;
@@ -1041,7 +1053,7 @@ namespace WindowsFormsApp1
             // ksKeyInputFile
             // 
             this.ksKeyInputFile.Enabled = false;
-            this.ksKeyInputFile.Location = new System.Drawing.Point(21, 270);
+            this.ksKeyInputFile.Location = new System.Drawing.Point(21, 227);
             this.ksKeyInputFile.Margin = new System.Windows.Forms.Padding(4);
             this.ksKeyInputFile.Name = "ksKeyInputFile";
             this.ksKeyInputFile.Size = new System.Drawing.Size(455, 22);
@@ -1050,7 +1062,7 @@ namespace WindowsFormsApp1
             // ksDecFileBtn
             // 
             this.ksDecFileBtn.Enabled = false;
-            this.ksDecFileBtn.Location = new System.Drawing.Point(424, 586);
+            this.ksDecFileBtn.Location = new System.Drawing.Point(430, 500);
             this.ksDecFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ksDecFileBtn.Name = "ksDecFileBtn";
             this.ksDecFileBtn.Size = new System.Drawing.Size(183, 68);
@@ -1061,7 +1073,7 @@ namespace WindowsFormsApp1
             // 
             // ksKeyFileBtn
             // 
-            this.ksKeyFileBtn.Location = new System.Drawing.Point(499, 254);
+            this.ksKeyFileBtn.Location = new System.Drawing.Point(499, 211);
             this.ksKeyFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ksKeyFileBtn.Name = "ksKeyFileBtn";
             this.ksKeyFileBtn.Size = new System.Drawing.Size(172, 54);
@@ -1073,7 +1085,7 @@ namespace WindowsFormsApp1
             // ksEncFileBtn
             // 
             this.ksEncFileBtn.Enabled = false;
-            this.ksEncFileBtn.Location = new System.Drawing.Point(83, 586);
+            this.ksEncFileBtn.Location = new System.Drawing.Point(81, 500);
             this.ksEncFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ksEncFileBtn.Name = "ksEncFileBtn";
             this.ksEncFileBtn.Size = new System.Drawing.Size(183, 68);
@@ -1085,7 +1097,7 @@ namespace WindowsFormsApp1
             // ksInputPathFile
             // 
             this.ksInputPathFile.Enabled = false;
-            this.ksInputPathFile.Location = new System.Drawing.Point(21, 317);
+            this.ksInputPathFile.Location = new System.Drawing.Point(21, 274);
             this.ksInputPathFile.Margin = new System.Windows.Forms.Padding(4);
             this.ksInputPathFile.Multiline = true;
             this.ksInputPathFile.Name = "ksInputPathFile";
@@ -1095,7 +1107,7 @@ namespace WindowsFormsApp1
             // ksOutputPathFile
             // 
             this.ksOutputPathFile.Enabled = false;
-            this.ksOutputPathFile.Location = new System.Drawing.Point(21, 434);
+            this.ksOutputPathFile.Location = new System.Drawing.Point(21, 391);
             this.ksOutputPathFile.Margin = new System.Windows.Forms.Padding(4);
             this.ksOutputPathFile.Name = "ksOutputPathFile";
             this.ksOutputPathFile.Size = new System.Drawing.Size(455, 22);
@@ -1103,7 +1115,7 @@ namespace WindowsFormsApp1
             // 
             // ksInputFileBtn
             // 
-            this.ksInputFileBtn.Location = new System.Drawing.Point(501, 333);
+            this.ksInputFileBtn.Location = new System.Drawing.Point(501, 290);
             this.ksInputFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ksInputFileBtn.Name = "ksInputFileBtn";
             this.ksInputFileBtn.Size = new System.Drawing.Size(173, 55);
@@ -1114,7 +1126,7 @@ namespace WindowsFormsApp1
             // 
             // ksOutputFileBtn
             // 
-            this.ksOutputFileBtn.Location = new System.Drawing.Point(501, 418);
+            this.ksOutputFileBtn.Location = new System.Drawing.Point(501, 375);
             this.ksOutputFileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ksOutputFileBtn.Name = "ksOutputFileBtn";
             this.ksOutputFileBtn.Size = new System.Drawing.Size(173, 54);
@@ -1123,22 +1135,85 @@ namespace WindowsFormsApp1
             this.ksOutputFileBtn.UseVisualStyleBackColor = true;
             this.ksOutputFileBtn.Click += new System.EventHandler(this.ksOutputFileBtn_Click);
             // 
+            // RC6
+            // 
+            this.RC6.AutoSize = true;
+            this.RC6.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RC6.Location = new System.Drawing.Point(587, 15);
+            this.RC6.Name = "RC6";
+            this.RC6.Size = new System.Drawing.Size(89, 39);
+            this.RC6.TabIndex = 37;
+            this.RC6.Text = "RC6";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(1147, 654);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(226, 17);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "Algorithm supports BMPs and CTR\r\n";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(577, 128);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(112, 17);
+            this.label25.TabIndex = 36;
+            this.label25.Text = "Hash validate:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(252, 110);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(112, 17);
+            this.label26.TabIndex = 40;
+            this.label26.Text = "Hash validate:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(577, 13);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(175, 39);
+            this.label27.TabIndex = 41;
+            this.label27.Text = "Knapsack";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(1156, 658);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(217, 17);
+            this.label28.TabIndex = 42;
+            this.label28.Text = "Algorithm supports parallelization";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 600);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(594, 15);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(283, 17);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "The algorithm supports parallelization";
+            this.label8.Size = new System.Drawing.Size(89, 39);
+            this.label8.TabIndex = 42;
+            this.label8.Text = "Bifid";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1432, 758);
             this.Controls.Add(this.tabControl1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Zastita Informacija";
             this.tabControl1.ResumeLayout(false);
@@ -1262,6 +1337,12 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox ksKeyInputFile;
         private System.Windows.Forms.Button ksKeyFileBtn;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label RC6;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label8;
     }
 }
