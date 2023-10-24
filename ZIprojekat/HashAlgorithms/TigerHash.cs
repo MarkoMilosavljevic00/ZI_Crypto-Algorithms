@@ -61,9 +61,9 @@ namespace ZIprojekat
             }
         }
 
-        public byte[] Process(string message)
+        public byte[] HashValue(string value)
         {
-            Preprocess(message);
+            Preprocess(value);
 
             foreach (byte[] chunk in chunksOf512bits)
             {

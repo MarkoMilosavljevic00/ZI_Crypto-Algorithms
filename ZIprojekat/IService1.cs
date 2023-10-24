@@ -37,9 +37,16 @@ namespace ZIprojekat
         List<string> EncryptBifid(List<string> source);
         [OperationContract]
         List<string> DecryptBifid(List<string> source);
-
         [OperationContract]
         byte[] GenerateTigerHash(string source);
+        [OperationContract]
+        List<string> GenerateRandomKeyKS();
+        [OperationContract]
+        void LoadKeyKS(string key);
+        [OperationContract]
+        string EncryptKS(string source);
+        [OperationContract]
+        string DecryptKS(string source);
 
         // TODO: Add your service operations here
     }

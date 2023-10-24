@@ -20,16 +20,14 @@ namespace ZIprojekat
 
         public void SetNonce(string nonce)
         {
-            //rc6 = new RC6();
             if (nonce.Length > 4) nonce = nonce.Substring(0, 4);
             counter = 0;
-            //nonceAndCounter = new byte[16];
             Array.Copy(Encoding.Unicode.GetBytes(nonce), nonceAndCounter, 8);
         }
 
         public byte[] EncryptRC6(byte[] data, string key)
         {
-            rc6.ExpandKey(Encoding.UTF8.GetBytes(key));
+            rc6.GenerateKey(Encoding.UTF8.GetBytes(key));
             byte[] encrypted = new byte[data.Length];
             for (int i = 0; i < data.Length; i += 16)
             {

@@ -7,37 +7,32 @@ namespace ZIprojekat
 {
     public class Bifid
     {
-        #region Attributes
 
-        private char[,] keySquare = new char[5, 5];
+        private char[,] key = new char[5, 5];
+        private int indexI;
+        private int indexJ;
         private int period = 5;
-        private int iIndexI;
-        private int iIndexJ;
 
-
-        #endregion
 
         public Bifid()
         {
         }
 
-        #region Methodes
-
-        public void stepOneEncrypt(string plaintext, out string[] values)
+        public string[] Encrypt1(string plaintext)
         {
-            values = new string[2]; //values[0] - row, values[1] - col
-            bool foundLetter = false;
+            string[] val = new string[2];
+            bool found = false;
 
             foreach (var item in plaintext)
             {
                 if (item == ' ')
                 {
-                    values[0] += " ";
-                    values[1] += " ";
+                    val[0] += " ";
+                    val[1] += " ";
                     continue;
                 }
 
-                if (!Char.IsLetter(item)) //ignorisanje bilo kog drugog znaka ili broja
+                if (!Char.IsLetter(item))
                     continue;
 
                 for (int i = 0; i < 5; i++)
@@ -46,31 +41,32 @@ namespace ZIprojekat
                     {
                         if (item == 'j')
                         {
-                            values[0] += (iIndexI + 1).ToString();
-                            values[1] += (iIndexJ + 1).ToString();
+                            val[0] += (indexI + 1).ToString();
+                            val[1] += (indexJ + 1).ToString();
 
-                            foundLetter = true;
+                            found = true;
                             break;
                         }
-                        else if (keySquare[i, j] == item)
+                        else if (key[i, j] == item)
                         {
-                            values[0] += (i + 1).ToString();
-                            values[1] += (j + 1).ToString();
+                            val[0] += (i + 1).ToString();
+                            val[1] += (j + 1).ToString();
 
-                            foundLetter = true;
+                            found = true;
                             break;
                         }
                     }
-                    if (foundLetter)
+                    if (found)
                     {
-                        foundLetter = false;
+                        found = false;
                         break;
                     }
                 }
             }
+            return val;
         }
 
-        public void stepTwoEncrypt(string[] values)
+        public void Encrypt2(string[] values)
         {
             string[] trimmedValues = new string[2];
             trimmedValues[0] = values[0].Replace(" ", "");
@@ -94,52 +90,53 @@ namespace ZIprojekat
             values[1] += trimmedValues[1].Substring(temp - length);
         }
 
-        public void stepThreeEncrypt(string[] values, out string newValue)
+        public string Encrypt3(string[] values)
         {
-            newValue = "";
-            string[] rows = values[0].Split(' ');
-            string[] cols = values[1].Split(' ');
+            string together = "";
+            string[] r = values[0].Split(' ');
+            string[] c = values[1].Split(' ');
 
-            for (int i = 0; i < rows.Length; i++)
-                newValue += rows[i] + cols[i] + " ";
+            for (int i = 0; i < r.Length; i++)
+                together += r[i] + c[i] + " ";
+            return together;
         }
 
-        public void stepFourEncrypt(string newValue, out string encryptedPlaintext)
+        public string Encrypt4(string newValue)
         {
-            encryptedPlaintext = "";
+            string ciphertext = "";
 
             for (int i = 0; i < newValue.Length - 2; i += 2)
             {
                 if (newValue[i] == ' ')
                 {
-                    //encryptedPlaintext += " ";
                     i++;
                 }
-                encryptedPlaintext += keySquare[Int32.Parse(newValue[i].ToString()) - 1, Int32.Parse(newValue[i + 1].ToString()) - 1];
+                ciphertext += key[Int32.Parse(newValue[i].ToString()) - 1, Int32.Parse(newValue[i + 1].ToString()) - 1];
             }
+            return ciphertext;
         }
 
-        public void stepOneDecrypt(string encryptedPlaintext, out string newValue)
+        public string Decrypt1(string ciphertext)
         {
-            newValue = "";
-            int length = encryptedPlaintext.Length;
-            int temp = length;
+            string value = "";
+            int l = ciphertext.Length;
+            int tmp = l;
             int k = 0;
-            while ((length - period) >= 0)
+            while ((l - period) >= 0)
             {
-                newValue += encryptedPlaintext.Substring(period * k, period);
-                newValue += " ";
+                value += ciphertext.Substring(period * k, period);
+                value += " ";
                 k++;
-                length -= period;
+                l -= period;
             }
-            newValue += encryptedPlaintext.Substring(temp - length);
+            value += ciphertext.Substring(tmp - l);
+            return value;
         }
 
-        public void stepTwoDecrypt(string newValue, out string value)
+        public string Decrypt2(string newValue)
         {
-            value = "";
-            bool foundLetter = false;
-
+            string value = "";
+            bool found = false;
             for (int k = 0; k < newValue.Length; k++)
             {
                 if (newValue[k] == ' ')
@@ -150,80 +147,72 @@ namespace ZIprojekat
                 {
                     for (int j = 0; j < 5; j++)
                     {
-                        if (newValue[k] == keySquare[i, j])
+                        if (newValue[k] == key[i, j])
                         {
                             value += (i + 1).ToString() + (j + 1).ToString();
-                            foundLetter = true;
+                            found = true;
                             break;
                         }
                     }
-                    if (foundLetter)
+                    if (found)
                     {
-                        foundLetter = false;
+                        found = false;
                         break;
                     }
                 }
             }
+            return value;
         }
 
-        public void stepThreeDecrypt(string value, out string[] values)
+        public string[] Decrypt3(string value)
         {
-            values = new string[2];
-            int length = value.Length;
-            int temp = length;
+            string[] values = new string[2];
+            int l = value.Length;
+            int tmp = l;
             int k = 0;
 
-            while ((length - period * 2) >= 0)
+            while ((l - period * 2) >= 0)
             {
                 values[0] += value.Substring(period * k, period);
                 values[1] += value.Substring(period * (k + 1), period);
                 k += 2;
-                length -= period * 2;
+                l -= period * 2;
             }
-            values[0] += value.Substring(temp - length, length / 2);
-            values[1] += value.Substring(temp - length / 2, length / 2);
+            values[0] += value.Substring(tmp - l, l / 2);
+            values[1] += value.Substring(tmp - l / 2, l / 2);
+            return values;
         }
 
-        public void stepFourDecrypt(string[] values, out string plaintext)
+        public string Decrypt4(string[] values)
         {
-            plaintext = "";
-
+           string plaintext = "";
             for (int i = 0; i < values[0].Length; i++)
             {
-                int row = Int32.Parse(values[0][i].ToString()) - 1;
-                int col = Int32.Parse(values[1][i].ToString()) - 1;
+                int r = Int32.Parse(values[0][i].ToString()) - 1;
+                int c = Int32.Parse(values[1][i].ToString()) - 1;
 
-                plaintext += keySquare[row, col];
+                plaintext += key[r, c];
             }
+            return plaintext;
         }
 
         public byte[] Encrypt(byte[] plaintext)
         {
-            string[] rcValues;
-            string rcTogether;
-            string temp;
+            string[] values = Encrypt1(Encoding.Unicode.GetString(plaintext).ToLower());
+            this.Encrypt2(values);
+            string valuesTogether = Encrypt3(values);
+            string ciphertext_str = Encrypt4(valuesTogether);
 
-            this.stepOneEncrypt(Encoding.Unicode.GetString(plaintext).ToLower(), out rcValues);
-            this.stepTwoEncrypt(rcValues);
-            this.stepThreeEncrypt(rcValues, out rcTogether);
-            this.stepFourEncrypt(rcTogether, out temp);
-
-            byte[] ciphertext = Encoding.Unicode.GetBytes(temp);
+            byte[] ciphertext = Encoding.Unicode.GetBytes(ciphertext_str);
             return ciphertext;
         }
 
         public byte[] Decrypt(byte[] ciphertext)
         {
-            string temp2;
-            string temp3;
-            string[] values;
-            string plaintext_str;
-
-            this.stepOneDecrypt(Encoding.Unicode.GetString(ciphertext), out temp2);
-            this.stepTwoDecrypt(temp2, out temp3);
-            this.stepThreeDecrypt(temp3, out values);
-            this.stepFourDecrypt(values, out plaintext_str);
-
+            string temp2 = Decrypt1(Encoding.Unicode.GetString(ciphertext));
+            string temp3 = Decrypt2(temp2);
+            string[] values = Decrypt3(temp3);
+            string plaintext_str = Decrypt4(values);
 
             byte[] plaintext = Encoding.Unicode.GetBytes(plaintext_str);
             return plaintext;
@@ -231,125 +220,31 @@ namespace ZIprojekat
 
         public List<string> EncryptLines(List<string> plaintextLines)
         {
-            //string[] splited = filePath.Split('\\');
-            //string fileName = splited[splited.Length - 1].Replace(".txt", "KeySquare.txt");
-            //this.LoadKey(fileName);
-
-            //List<string> plaintextLines = new List<string>();
-
-            ////u slucaju ponovnog otvaranja kroz fsw nakon nekog vremena
-            //using (StreamReader sr = new StreamReader(new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))
-            //{
-            //    string line = sr.ReadLine();
-            //    while (!String.IsNullOrEmpty(line))
-            //    {
-            //        plaintextLines.Add(line);
-            //        line = sr.ReadLine();
-            //    }
-            //}
-
-            string[] rcValues;
-            string rcTogether;
             List<string> encryptedLines = new List<string>();
-            string oneLine = "";
 
-            foreach (var item in plaintextLines)
+            foreach (var plaintext in plaintextLines)
             {
-                string temp;
-                oneLine += item.Replace(" ", "") + "\n";
-                this.stepOneEncrypt(item.ToLower(), out rcValues);
-                this.stepTwoEncrypt(rcValues);
-                this.stepThreeEncrypt(rcValues, out rcTogether);
-                this.stepFourEncrypt(rcTogether, out temp);
-                encryptedLines.Add(temp);
+                string[] values = Encrypt1(plaintext.ToLower());
+                this.Encrypt2(values);
+                string valuesTogether = Encrypt3(values);
+                string ciphertext_str = Encrypt4(valuesTogether);
+                encryptedLines.Add(ciphertext_str);
             }
-
-            //byte[] hashedText = tigerHash.Process(oneLine);
-            //string hashed = Encoding.Unicode.GetString(hashedText);
-            //encryptedLines.Add(hashed);
-
             return encryptedLines;
         }
 
-        public List<string> DecryptLines(List<string> plaintextLines/*, out bool sameHashes*/)
+        public List<string> DecryptLines(List<string> ciphertextLines)
         {
-            //sameHashes = false;
-
-            //string[] splited = filePath.Split('\\');
-            //string fileName = splited[splited.Length - 1].Replace(".txt", "KeySquare.txt");
-            //this.LoadKey(fileName);
-
-            //List<string> plaintextLines = new List<string>();
-
-            ////u slucaju ponovnog otvaranja kroz fsw nakon nekog vremena
-            //using (StreamReader sr = new StreamReader(new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite), Encoding.Unicode))
-            //{
-            //    string line = sr.ReadLine();
-            //    while (!String.IsNullOrEmpty(line))
-            //    {
-            //        plaintextLines.Add(line);
-            //        line = sr.ReadLine();
-            //    }
-            //}
-
-            string temp2;
-            string temp3;
-            string[] values;
-            string plaintext;
             List<string> decryptedLines = new List<string>();
-            string oneLine = "";
-
-            //for (int i = 0; i < plaintextLines.Count - 1; i++)
-            foreach (string line in plaintextLines)
+            foreach (string ciphertext in ciphertextLines)
             {
-                this.stepOneDecrypt(line, out temp2);
-                this.stepTwoDecrypt(temp2, out temp3);
-                this.stepThreeDecrypt(temp3, out values);
-                this.stepFourDecrypt(values, out plaintext);
-                oneLine += plaintext + "\n";
-                decryptedLines.Add(plaintext);
+                string temp2 = Decrypt1(ciphertext);
+                string temp3 = Decrypt2(temp2);
+                string[] values = Decrypt3(temp3);
+                string plaintext_str = Decrypt4(values);
+                decryptedLines.Add(plaintext_str);
             }
-
             return decryptedLines;
-        }
-
-        public void GenerateAndSaveKey(string fileName)
-        {
-            if (!Directory.Exists("Key Squares"))
-                Directory.CreateDirectory("Key Squares");
-
-            string filePath = "Key Squares\\" + fileName;
-
-            using (StreamWriter sw = new StreamWriter(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite)))
-            {
-                Random rand = new Random();
-                List<char> showedLetters = new List<char>();
-                for (int i = 0; i < 5; i++)
-                {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        int charNumb = rand.Next(97, 123);
-                        char letter = Convert.ToChar(charNumb);
-                        if (letter == 'i' && !showedLetters.Contains(letter))
-                        {
-                            iIndexI = i;
-                            iIndexJ = j;
-                        }
-                        if (letter == 'j' || showedLetters.Contains(letter))
-                        {
-                            j--;
-                            continue;
-                        }
-
-                        showedLetters.Add(letter);
-                        keySquare[i, j] = letter;
-
-                        sw.Write(letter);
-                    }
-
-                    sw.WriteLine();
-                }
-            }
         }
 
         public List<string> GenerateKey()
@@ -366,8 +261,8 @@ namespace ZIprojekat
                     char letter = Convert.ToChar(charNumb);
                     if (letter == 'i' && !randomLetters.Contains(letter))
                     {
-                        iIndexI = i;
-                        iIndexJ = j;
+                        indexI = i;
+                        indexJ = j;
                     }
                     if (letter == 'j' || randomLetters.Contains(letter))
                     {
@@ -376,7 +271,7 @@ namespace ZIprojekat
                     }
 
                     randomLetters.Add(letter);
-                    keySquare[i, j] = letter;
+                    key[i, j] = letter;
                     tmp += letter;
                 }
                 strings.Add(tmp);
@@ -393,40 +288,14 @@ namespace ZIprojekat
                 {
                     if (c == 'i')
                     {
-                        iIndexI = i;
-                        iIndexJ = j;
+                        indexI = i;
+                        indexJ = j;
                     }
-                    keySquare[i, j++] = c;
+                    this.key[i, j++] = c;
                 }
                 i++;
                 j = 0;
             }
-
-            //    using (StreamReader sr = new StreamReader(new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))
-            //    {
-            //        string readLine = sr.ReadLine();
-            //        int i = 0;
-            //        int j = 0;
-
-            //        while (i < 5)
-            //        {
-            //            foreach (var item in readLine)
-            //            {
-            //                if (item == 'i')
-            //                {
-            //                    iIndexI = i;
-            //                    iIndexJ = j;
-            //                }
-            //                keySquare[i, j++] = item;
-            //            }
-            //            i++;
-            //            j = 0;
-            //            readLine = sr.ReadLine();
-            //        }
-            //    }
-            //}
-
-            #endregion
         }
     }
 }

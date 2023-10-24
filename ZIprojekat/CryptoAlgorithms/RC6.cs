@@ -9,135 +9,143 @@ namespace ZIprojekat
 {
     public class RC6
     {
-        private const int R = 20; 
-        private static uint[] RoundKey = new uint[2 * R + 4];  
-        private const int W = 32; 
-        private static byte[] MainKey; 
-        private const uint P32 = 0xB7E15163;
-        private const uint Q32 = 0x9E3779B9;
+        private const int numOfRounds = 20; 
+        private const int w = 32; 
+        private uint[] roundKey = new uint[2 * numOfRounds + 4];  
+        private byte[] mainKey; 
+
+        private const uint P = 0xB7E15163;
+        private const uint Q = 0x9E3779B9;
 
         public RC6(byte[] key)
         {
-            ExpandKey(key);
+            GenerateKey(key);
         }
 
         public RC6()
         {
         }
-
-        private static uint RightShift(uint value, int shift)
+        public void GenerateKey(byte[] key)
         {
-            return (value >> shift) | (value << (W - shift));
-        }
-        private static uint LeftShift(uint value, int shift)
-        {
-            return (value << shift) | (value >> (W - shift));
-        }
-        public void ExpandKey(byte[] keyCheck)
-        {
-            MainKey = keyCheck;
+            mainKey = key;
             int c = 0;
             int i, j;
-            c = keyCheck.Length / 4;
+            c = key.Length / 4;
             uint[] L = new uint[c];
             for (i = 0; i < c; i++)
             {
-                L[i] = BitConverter.ToUInt32(MainKey, i * 4); 
+                L[i] = BitConverter.ToUInt32(mainKey, i * 4); 
             }
-            RoundKey[0] = P32;
-            for (i = 1; i < 2 * R + 4; i++)
-                RoundKey[i] = RoundKey[i - 1] + Q32;
+            roundKey[0] = P;
+            for (i = 1; i < 2 * numOfRounds + 4; i++)
+                roundKey[i] = roundKey[i - 1] + Q;
             uint A, B; 
             A = B = 0;
             i = j = 0;
-            int V = 3 * Math.Max(c, 2 * R + 4); 
+            int V = 3 * Math.Max(c, 2 * numOfRounds + 4); 
             for (int s = 1; s <= V; s++)
             {
-                A = RoundKey[i] = LeftShift((RoundKey[i] + A + B), 3);
+                A = roundKey[i] = LeftShift((roundKey[i] + A + B), 3);
                 B = L[j] = LeftShift((L[j] + A + B), (int)(A + B));
-                i = (i + 1) % (2 * R + 4);
+                i = (i + 1) % (2 * numOfRounds + 4);
                 j = (j + 1) % c;
             }
         }
-        private static byte[] ToArrayBytes(uint[] uints, int Long)
-        {
-            byte[] arrayBytes = new byte[Long * 4];
-            for (int i = 0; i < Long; i++)
-            {
-                byte[] temp = BitConverter.GetBytes(uints[i]);
-                temp.CopyTo(arrayBytes, i * 4);
-            }
-            return arrayBytes;
-        }
-        public byte[] Encrypt(byte[] byteText)
+
+        public byte[] Encrypt(byte[] plaintext)
         {
             uint A, B, C, D;
-            int i = byteText.Length;
+            int i = plaintext.Length;
             while (i % 16 != 0)
                 i++;
+
             byte[] text = new byte[i];
-            byteText.CopyTo(text, 0);
-            byte[] cipherText = new byte[i];
+            plaintext.CopyTo(text, 0);
+            byte[] ciphertext = new byte[i];
+
             for (i = 0; i < text.Length; i = i + 16)
             {
                 A = BitConverter.ToUInt32(text, i);
                 B = BitConverter.ToUInt32(text, i + 4);
                 C = BitConverter.ToUInt32(text, i + 8);
                 D = BitConverter.ToUInt32(text, i + 12);
-                B = B + RoundKey[0];
-                D = D + RoundKey[1];
-                for (int j = 1; j <= R; j++)
+                B = B + roundKey[0];
+                D = D + roundKey[1];
+                for (int j = 1; j <= numOfRounds; j++)
                 {
-                    uint t = LeftShift((B * (2 * B + 1)), (int)(Math.Log(W, 2)));
-                    uint u = LeftShift((D * (2 * D + 1)), (int)(Math.Log(W, 2)));
-                    A = (LeftShift((A ^ t), (int)u)) + RoundKey[j * 2];
-                    C = (LeftShift((C ^ u), (int)t)) + RoundKey[j * 2 + 1];
+                    uint t = LeftShift((B * (2 * B + 1)), (int)(Math.Log(w, 2)));
+                    uint u = LeftShift((D * (2 * D + 1)), (int)(Math.Log(w, 2)));
+                    A = (LeftShift((A ^ t), (int)u)) + roundKey[j * 2];
+                    C = (LeftShift((C ^ u), (int)t)) + roundKey[j * 2 + 1];
                     uint temp = A;
                     A = B;
                     B = C;
                     C = D;
                     D = temp;
                 }
-                A = A + RoundKey[2 * R + 2];
-                C = C + RoundKey[2 * R + 3];
-                uint[] tempWords = new uint[4] { A, B, C, D };
-                byte[] block = ToArrayBytes(tempWords, 4);
-                block.CopyTo(cipherText, i);
+
+                A = A + roundKey[2 * numOfRounds + 2];
+                C = C + roundKey[2 * numOfRounds + 3];
+                uint[] tmps = new uint[4] { A, B, C, D };
+                byte[] block = ToArrayBytes(tmps, 4);
+                block.CopyTo(ciphertext, i);
             }
-            return cipherText;
+            return ciphertext;
         }
-        public byte[] Decrypt(byte[] cipherText)
+        public byte[] Decrypt(byte[] ciphertext)
         {
             uint A, B, C, D;
             int i;
-            byte[] plainText = new byte[cipherText.Length];
-            for (i = 0; i < cipherText.Length; i = i + 16)
+            byte[] plainText = new byte[ciphertext.Length];
+
+            for (i = 0; i < ciphertext.Length; i = i + 16)
             {
-                A = BitConverter.ToUInt32(cipherText, i);
-                B = BitConverter.ToUInt32(cipherText, i + 4);
-                C = BitConverter.ToUInt32(cipherText, i + 8);
-                D = BitConverter.ToUInt32(cipherText, i + 12);
-                C = C - RoundKey[2 * R + 3];
-                A = A - RoundKey[2 * R + 2];
-                for (int j = R; j >= 1; j--)
+                A = BitConverter.ToUInt32(ciphertext, i);
+                B = BitConverter.ToUInt32(ciphertext, i + 4);
+                C = BitConverter.ToUInt32(ciphertext, i + 8);
+                D = BitConverter.ToUInt32(ciphertext, i + 12);
+                C = C - roundKey[2 * numOfRounds + 3];
+                A = A - roundKey[2 * numOfRounds + 2];
+                for (int j = numOfRounds; j >= 1; j--)
                 {
-                    uint temp = D;
+                    uint tmp = D;
                     D = C;
                     C = B;
                     B = A;
-                    A = temp;
-                    uint u = LeftShift((D * (2 * D + 1)), (int)Math.Log(W, 2));
-                    uint t = LeftShift((B * (2 * B + 1)), (int)Math.Log(W, 2));
-                    C = RightShift((C - RoundKey[2 * j + 1]), (int)t) ^ u;
-                    A = RightShift((A - RoundKey[2 * j]), (int)u) ^ t;
+                    A = tmp;
+                    uint u = LeftShift((D * (2 * D + 1)), (int)Math.Log(w, 2));
+                    uint t = LeftShift((B * (2 * B + 1)), (int)Math.Log(w, 2));
+                    C = RightShift((C - roundKey[2 * j + 1]), (int)t) ^ u;
+                    A = RightShift((A - roundKey[2 * j]), (int)u) ^ t;
                 }
-                D = D - RoundKey[1];
-                B = B - RoundKey[0];
-                uint[] tempWords = new uint[4] { A, B, C, D };
-                byte[] block = ToArrayBytes(tempWords, 4);
+                D = D - roundKey[1];
+                B = B - roundKey[0];
+                uint[] tmps = new uint[4] { A, B, C, D };
+                byte[] block = ToArrayBytes(tmps, 4);
                 block.CopyTo(plainText, i);
             }
             return plainText;
+        }
+
+        public uint RightShift(uint value, int shift)
+        {
+            return (value >> shift) | (value << (w - shift));
+        }
+
+        public uint LeftShift(uint value, int shift)
+        {
+            return (value << shift) | (value >> (w - shift));
+        }
+
+        public byte[] ToArrayBytes(uint[] uints, int Long)
+        {
+            byte[] array = new byte[Long * 4];
+            for (int i = 0; i < Long; i++)
+            {
+                byte[] tmp = BitConverter.GetBytes(uints[i]);
+                tmp.CopyTo(array, i * 4);
+            }
+            return array;
         }
     }
 }

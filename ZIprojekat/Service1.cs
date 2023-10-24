@@ -16,11 +16,13 @@ namespace ZIprojekat
         RC6 rc6;
         CTR ctr;
         Bifid bifid;
+        Knapsack ks;
         byte[] rc6BmpHash;
         public Service1()
         {
             rc6 = new RC6();
             bifid = new Bifid();
+            ks = new Knapsack();
             ctr = new CTR(rc6);
         }
 
@@ -53,13 +55,13 @@ namespace ZIprojekat
             if (hash)
             {
                 TigerHash tigerHash = new TigerHash();
-                rc6BmpHash = tigerHash.Process(Encoding.Default.GetString(pixelData));
+                rc6BmpHash = tigerHash.HashValue(Encoding.Default.GetString(pixelData));
             }
 
             switch (alghorithm)
             {
                 case "RC6":
-                    rc6.ExpandKey(Encoding.Default.GetBytes(key));
+                    rc6.GenerateKey(Encoding.Default.GetBytes(key));
                     encData = rc6.Encrypt(pixelData);
                     break;
                 case "RC6_CTR":
@@ -94,7 +96,7 @@ namespace ZIprojekat
             switch (alghorithm)
             {
                 case "RC6":
-                    rc6.ExpandKey(Encoding.Default.GetBytes(key));
+                    rc6.GenerateKey(Encoding.Default.GetBytes(key));
                     decData = rc6.Decrypt(pixelData);
                     break;
                 case "RC6_CTR":
@@ -110,7 +112,7 @@ namespace ZIprojekat
                 if (rc6BmpHash != null)
                 {
                     TigerHash tigerHash = new TigerHash();
-                    byte[] checkHash = tigerHash.Process(Encoding.Default.GetString(decData));
+                    byte[] checkHash = tigerHash.HashValue(Encoding.Default.GetString(decData));
                     if (!checkHash.SequenceEqual(rc6BmpHash))
                     {
                         return false;
@@ -134,16 +136,22 @@ namespace ZIprojekat
             return true;
         }
 
-
         public string EncryptRC6(string source, string key)
         {
             //RC6 rc = new RC6(Encoding.UTF8.GetBytes(key));
-            rc6.ExpandKey(Encoding.UTF8.GetBytes(key));
+            rc6.GenerateKey(Encoding.UTF8.GetBytes(key));
             byte[] byteText = Encoding.Default.GetBytes(source);
             string res = Encoding.Default.GetString(rc6.Encrypt(byteText));
             return res;
         }
 
+        public string DecryptRC6(string source, string key)
+        {
+            //RC6 rc = new RC6(Encoding.UTF8.GetBytes(key));
+            rc6.GenerateKey(Encoding.UTF8.GetBytes(key));
+            string res = Encoding.Default.GetString(rc6.Decrypt(Encoding.Default.GetBytes(source)));
+            return res;
+        }
         public string EncryptRC6_CTRmode(string source, string key, string nonce)
         {
             ctr.SetNonce(nonce);
@@ -151,14 +159,6 @@ namespace ZIprojekat
             string res = Encoding.Default.GetString(ctr.EncryptRC6(byteText, key));
             return res;
 
-        }
-
-        public string DecryptRC6(string source, string key)
-        {
-            //RC6 rc = new RC6(Encoding.UTF8.GetBytes(key));
-            rc6.ExpandKey(Encoding.UTF8.GetBytes(key));
-            string res = Encoding.Default.GetString(rc6.Decrypt(Encoding.Default.GetBytes(source)));
-            return res;
         }
 
         public string DecryptRC6_CTRmode(string source, string key, string nonce)
@@ -193,10 +193,33 @@ namespace ZIprojekat
             return res;
         }
 
+        public List<string> GenerateRandomKeyKS()
+        {
+            List<string> key = ks.GenerateKeys();
+            return key;
+        }
+
+        public void LoadKeyKS(string key)
+        {
+            ks.LoadKey(key);
+        }
+
+        public string EncryptKS(string source)
+        {
+            string res = ks.Encrypt(source);
+            return res;
+        }
+
+        public string DecryptKS(string source)
+        {
+            string res = ks.Decrypt(source);
+            return res;
+        }
+
         public byte[] GenerateTigerHash(string source)
         {
             TigerHash th = new TigerHash();
-            byte[] res = th.Process(source);
+            byte[] res = th.HashValue(source);
             return res;
         }
 

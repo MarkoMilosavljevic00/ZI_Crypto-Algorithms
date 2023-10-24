@@ -155,6 +155,30 @@ namespace WindowsFormsApp1.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerateTigerHash", ReplyAction="http://tempuri.org/IService1/GenerateTigerHashResponse")]
         System.Threading.Tasks.Task<byte[]> GenerateTigerHashAsync(string source);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerateRandomKeyKS", ReplyAction="http://tempuri.org/IService1/GenerateRandomKeyKSResponse")]
+        string[] GenerateRandomKeyKS();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerateRandomKeyKS", ReplyAction="http://tempuri.org/IService1/GenerateRandomKeyKSResponse")]
+        System.Threading.Tasks.Task<string[]> GenerateRandomKeyKSAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoadKeyKS", ReplyAction="http://tempuri.org/IService1/LoadKeyKSResponse")]
+        void LoadKeyKS(string key);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoadKeyKS", ReplyAction="http://tempuri.org/IService1/LoadKeyKSResponse")]
+        System.Threading.Tasks.Task LoadKeyKSAsync(string key);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EncryptKS", ReplyAction="http://tempuri.org/IService1/EncryptKSResponse")]
+        string EncryptKS(string source);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EncryptKS", ReplyAction="http://tempuri.org/IService1/EncryptKSResponse")]
+        System.Threading.Tasks.Task<string> EncryptKSAsync(string source);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DecryptKS", ReplyAction="http://tempuri.org/IService1/DecryptKSResponse")]
+        string DecryptKS(string source);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DecryptKS", ReplyAction="http://tempuri.org/IService1/DecryptKSResponse")]
+        System.Threading.Tasks.Task<string> DecryptKSAsync(string source);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -286,6 +310,38 @@ namespace WindowsFormsApp1.ServiceReference1 {
         
         public System.Threading.Tasks.Task<byte[]> GenerateTigerHashAsync(string source) {
             return base.Channel.GenerateTigerHashAsync(source);
+        }
+        
+        public string[] GenerateRandomKeyKS() {
+            return base.Channel.GenerateRandomKeyKS();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GenerateRandomKeyKSAsync() {
+            return base.Channel.GenerateRandomKeyKSAsync();
+        }
+        
+        public void LoadKeyKS(string key) {
+            base.Channel.LoadKeyKS(key);
+        }
+        
+        public System.Threading.Tasks.Task LoadKeyKSAsync(string key) {
+            return base.Channel.LoadKeyKSAsync(key);
+        }
+        
+        public string EncryptKS(string source) {
+            return base.Channel.EncryptKS(source);
+        }
+        
+        public System.Threading.Tasks.Task<string> EncryptKSAsync(string source) {
+            return base.Channel.EncryptKSAsync(source);
+        }
+        
+        public string DecryptKS(string source) {
+            return base.Channel.DecryptKS(source);
+        }
+        
+        public System.Threading.Tasks.Task<string> DecryptKSAsync(string source) {
+            return base.Channel.DecryptKSAsync(source);
         }
     }
 }
