@@ -1,4 +1,4 @@
-﻿Zastita informacija PROJEKAT ![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.001.png)
+# ﻿Zastita informacija PROJEKAT
 
 **Grupa 3** 
 
@@ -61,11 +61,11 @@ Slika3
 
 Isti postupak cemo ponoviti i za unos Input fajla i Output direktorijuma (Slika4, Slika5) 
 
-![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.005.png)![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.006.png)
+![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.005.png)
 
 Slika4 
 
-![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.007.png)![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.008.png)
+![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.007.png)
 
 Slika5 
 
@@ -81,10 +81,6 @@ Dekriptovanje ![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.011.jpe
 
 Ponavljamo isti postupak kao za enkripciju s tim da za input fajl koristimo rezultat prethodne enkripcije. 
 
-![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.012.png)
-
-![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.013.png)
-
 **Slika7** 
 
 ![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.014.png)**Rezultat** 
@@ -93,7 +89,7 @@ CTR Mod
 
 CTR mod algoritma RC6 ukljucicemo tako sto cemo samo stiklirati checkbox CTR i uneti Nonce vrednost od 4 karaktera. Nakon toga obavicemo isti postupak. 
 
-![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.015.png) ![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.016.png)![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.017.png)
+![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.015.png)
 
 Slika8 
 
@@ -103,7 +99,7 @@ Kriptovanje bitmapa
 
 Ponovicemo isti postupak s tim da cemo za input fajl izabrati bitmapu. Ukoliko je sve kako treba izaci ce poruka da ste uspesno enkriptovali bitmapu. 
 
-![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.019.png)![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.020.png)
+![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.019.png)
 
 Slika9 ![ref1]![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.022.png)![ref1]
 
@@ -132,7 +128,7 @@ Paralelizacija
 
 Ovaj algoritam nam pruza mogucnost paralelizacije. Pri biranju fajlova za enkripciju/dekripciju imamo mogucnost oznacavanje vise fajlova. Kasnije, pri odabiru opcije “Encrypt files” vise paralelnih niti ce ucitati i enkriptovati odgovarajuce fajlove i upisati ih u odgovarajuci direktorijum. Isti slucaj je i za dekriptovanje. 
 
-![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.024.png)![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.025.png)
+![](imgs/Aspose.Words.02d409bf-bf11-49c9-8074-31770d2a47bd.024.png)
 
 **Slika11** 
 
